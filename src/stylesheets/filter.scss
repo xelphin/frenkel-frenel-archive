@@ -1,0 +1,31 @@
+@import "./general.scss";
+
+#filter-container {
+    border-bottom: 2px $color3-type1 solid;
+    padding: 0 $body-padding;
+
+    .specific-filter-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2vw;
+        font-size: $small-size;
+        margin-bottom: 20px;
+
+        .filter-item {
+            display: flex;
+            flex-direction: column;
+            width: 18vw;
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    #filter-container {
+        .specific-filter-container {
+            grid-template-columns: 1fr;
+            .filter-item {
+                width: 90vw;
+            }
+        }
+    }
+}

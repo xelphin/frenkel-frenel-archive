@@ -3,33 +3,47 @@
 /* --------------------------------------- */
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* Colors */
 $color1-type1: rgb(26, 26, 25);
 $color1-type2: rgb(54, 54, 51);
-$color2-type1: rgb(241, 241, 240);
-$color3-type1: rgb(34, 34, 102);
+$color2-type1: rgb(245, 245, 245);
+$color2-type2: rgb(227, 227, 225);
+$color3-type1: rgb(45, 45, 130);
 
 /* Font */
 $main-font: "Roboto", sans-serif;
 
+/* Text-Size */
+$title-size: 3em;
+$med-size: 2em;
+$small-size: 1.3em;
+
+/* Padding */
+$body-padding: 10px;
+
 ::selection {
-  /* text highlight costumization */
-  background-color: $color3-type1;
-  color: $color2-type1;
+    /* text highlight costumization */
+    background-color: $color3-type1;
+    color: $color2-type1;
 }
 
 ::backdrop {
-  background-color: $color2-type1;
-  opacity: 0.75;
+    background-color: $color2-type1;
+    opacity: 0.75;
 }
 
 body {
-  font-family: $main-font;
-  background-color: $color2-type1;
-  color: $color1-type1;
+    font-family: $main-font;
+    background-color: $color2-type1;
+    color: $color1-type1;
+}
+
+#title {
+    font-size: $title-size;
+    margin: $body-padding;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -118,12 +132,12 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -137,27 +151,27 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+    display: block;
 }
 body {
-  line-height: 1;
+    line-height: 1;
 }
 ol,
 ul {
-  list-style: none;
+    list-style: none;
 }
 blockquote,
 q {
-  quotes: none;
+    quotes: none;
 }
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
-  content: none;
+    content: "";
+    content: none;
 }
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }

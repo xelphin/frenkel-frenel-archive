@@ -1,0 +1,22 @@
+@import "./general.scss";
+
+#menu-container {
+    #content-selector-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        gap: 20px;
+        font-size: $med-size;
+        padding: 0 $body-padding;
+        margin-bottom: 10px;
+
+        .content-selector {
+            height: 35px;
+        }
+
+        .content-selector:hover {
+            border-bottom: 2px $color3-type1 solid;
+            color: $color3-type1;
+        }
+    }
+}
