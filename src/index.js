@@ -1,10 +1,10 @@
 // SCSS
 import "./stylesheets/style.scss";
 // JS
-import Filter from "./filters/filter";
+import Menu from "./menu/menu";
 import FetchData from "./fetchData/fetchData";
 
-Filter.createFilterItems("articles");
+Menu.init();
 
 FetchData.fetchArticlesSheet();
 FetchData.fetchPaintingsSheet();

@@ -8,8 +8,8 @@ If you change the format of the Google Sheets (like switch the order of the labe
 
 #### Updating Labels for DOM
 
--   Go to `./src/data/<content>Filter.json`
--   Edit it to match
+-   Go to `./src/filters/data/<content>Filter.json`
+-   Edit it to match, specifically: `"database-name"`
 -   Notice the `application:<invented value>`'s implementation is in `./src/filters/filter.js`
 
 #### Updating Google Script

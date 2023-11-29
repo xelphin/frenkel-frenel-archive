@@ -1,4 +1,7 @@
 const FilterDom = (function FilterDom() {
+    const allFiltersContainer = document.querySelector("#filter-container");
+
+    // HELPER
     const createLabel = (labelText) => {
         const label = document.createElement("label");
         label.textContent = `${labelText}:`;
@@ -26,6 +29,7 @@ const FilterDom = (function FilterDom() {
         return filterItem;
     };
 
+    // CREATE FILTER ITEM
     const createFilterItems = (labelInfoObj, containerId) => {
         /*
             <div class="filter-item">
@@ -54,8 +58,31 @@ const FilterDom = (function FilterDom() {
         });
     };
 
+    // HIDE/SHOW FILTER ITEMS
+    const hideAllFilterItems = () => {
+        const { children } = allFiltersContainer;
+
+        for (let i = 0; i < children.length; i += 1) {
+            const child = children[i];
+            child.style.display = "none";
+        }
+    };
+
+    const showSpecificFilterContainer = (filterContainerId) => {
+        const filterContainer = document.querySelector(`#${filterContainerId}`);
+        filterContainer.style.display = "grid";
+    };
+
+    const hideSpecificFilterContainer = (filterContainerId) => {
+        const filterContainer = document.querySelector(`#${filterContainerId}`);
+        filterContainer.style.display = "none";
+    };
+
     return {
         createFilterItems,
+        hideAllFilterItems,
+        showSpecificFilterContainer,
+        hideSpecificFilterContainer,
     };
 })();
 
