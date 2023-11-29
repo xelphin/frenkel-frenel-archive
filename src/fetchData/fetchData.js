@@ -8,6 +8,20 @@ const FetchData = (function FetchData() {
         "https://script.google.com/macros/s/AKfycbxJM7LWF55WxUhZCZ7NqGFQZMZE6zhqDtQ3gErnbRSnJ55zvW2UTSZbBlwzRC-PxacX5A/exec";
     const paintingsJSONUrl =
         "https://script.google.com/macros/s/AKfycbzumFKXgW69xcJCnB0L0o_19BdLqd_lJVValAFUv4OmxNCqH25V6uS2bAPn8kRTjZ6c/exec";
+    const articlesIdToLinkUrl =
+        "https://script.google.com/macros/s/AKfycbztFfJ5dqVfMSsP1xSdzisrsEQmKx-zuBLBhIasoIp7U5x1Loq4KgrfbwC6jtv6tgqA/exec";
+    const paintingsIdToLinkUrl = 
+        "https://script.google.com/macros/s/AKfycbz6VwStxIZT_CD5_q-Bv8EVjLZvS_qzRTkfEQ2xGDPj3a9xB2OxTPSBUiaAI6QVzaJUkw/exec";
+
+    
+    const removeExtension = (str) => {
+        const lastDotIndex = str.lastIndexOf('.');
+        if (lastDotIndex !== -1) {
+            return str.substring(0, lastDotIndex);
+        } else {
+            return str;
+        }
+    }
 
     const fetchData = async (url) => {
         try {
@@ -34,7 +48,7 @@ const FetchData = (function FetchData() {
             );
         }
         for (let i = 0; i < data.user.length; i += 1) {
-            obj[data.user[i].ID] = data.user[i];
+            obj[removeExtension(data.user[i].ID)] = data.user[i];
         }
         return obj;
     };
@@ -63,9 +77,35 @@ const FetchData = (function FetchData() {
         return paintingsObj;
     };
 
+    const fetchArticlesIdToLink = async () => {
+        const articlesIdToLink = await fetchData(articlesIdToLinkUrl);
+        if (articlesIdToLink === undefined) {
+            throw new Error(
+                `Go to the google Script and fix the issues. Link: https://script.google.com/u/0/home/projects/1fVpvjsdzDQ1auZMu27BkgC0Vv9Og6HuC2GTXqIaThb7AmsaTycq_zPGE/edit`,
+            );
+        }
+        const obj = reOrganizeData(articlesIdToLink);
+        console.log("Articles: ID to link: ", obj);
+        return obj; 
+    }
+
+    const fetchPaintingIdToLink = async () => {
+        const paintingsIdToLink = await fetchData(paintingsIdToLinkUrl);
+        if (paintingsIdToLink === undefined) {
+            throw new Error(
+                `Go to the google Script and fix the issues. Link: https://script.google.com/u/0/home/projects/1bkiYDO233iV5_KiSEADn7ubCspPJa7UP54v_OvbqK2Mf0G4OMWPe2nwO/edit`,
+            );
+        }
+        const obj = reOrganizeData(paintingsIdToLink);
+        console.log("Paintings: ID to link: ", obj);
+        return obj; 
+    }
+
     return {
         fetchArticlesSheet,
         fetchPaintingsSheet,
+        fetchArticlesIdToLink,
+        fetchPaintingIdToLink
     };
 })();
 

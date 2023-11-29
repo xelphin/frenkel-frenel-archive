@@ -8,3 +8,5 @@ Filter.createFilterItems("articles");
 
 FetchData.fetchArticlesSheet();
 FetchData.fetchPaintingsSheet();
+FetchData.fetchArticlesIdToLink();
+FetchData.fetchPaintingIdToLink();
