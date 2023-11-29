@@ -3,5 +3,5 @@
         "source.fixAll.eslint": true
     },
     "eslint.validate": ["javascript"],
-    "eslint.enable": false // Use to find Lint errors (can comment out because it's distracting)
+    // "eslint.enable": false // Use to find Lint errors (can comment out because it's distracting)
 }

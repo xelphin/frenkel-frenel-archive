@@ -9,18 +9,17 @@ const FetchData = (function FetchData() {
     const paintingsJSONUrl =
         "https://script.google.com/macros/s/AKfycbzumFKXgW69xcJCnB0L0o_19BdLqd_lJVValAFUv4OmxNCqH25V6uS2bAPn8kRTjZ6c/exec";
     const articlesIdToLinkUrl =
-        "https://script.google.com/macros/s/AKfycbztFfJ5dqVfMSsP1xSdzisrsEQmKx-zuBLBhIasoIp7U5x1Loq4KgrfbwC6jtv6tgqA/exec";
+        "https://script.google.com/macros/s/AKfycbzUqW3MzqPAmGXl9dhIr1O6ouonTK0fkG7VQ6Hvo3VvOKfHbpqqk26MneOEb12dpOmH/exec";
     const paintingsIdToLinkUrl = 
-        "https://script.google.com/macros/s/AKfycbz6VwStxIZT_CD5_q-Bv8EVjLZvS_qzRTkfEQ2xGDPj3a9xB2OxTPSBUiaAI6QVzaJUkw/exec";
+        "https://script.google.com/macros/s/AKfycbxI4qPV5fZ4Y4yHEeFxex1CP41RNCK-ydOm6uA-uVRdbq6pDg4mOOez4DPQ2c_OmtPGBw/exec";
 
     
     const removeExtension = (str) => {
         const lastDotIndex = str.lastIndexOf('.');
         if (lastDotIndex !== -1) {
             return str.substring(0, lastDotIndex);
-        } else {
-            return str;
-        }
+        } 
+        return str;
     }
 
     const fetchData = async (url) => {
