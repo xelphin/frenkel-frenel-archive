@@ -9,28 +9,28 @@ const FilterDom = (function FilterDom() {
         return label;
     };
 
-    const createInput = (inputId, labelText, type) => {
+    const createInput = (inputId, labelText, type, contentType) => {
         const input = document.createElement("input");
-        input.id = `item-input-${inputId}`;
+        input.id = `${contentType}-item-input-${inputId}`;
         input.type = type;
         input.class = "filter-item-input";
         input.placeholder = labelText;
         return input;
     };
 
-    const createFilterItem = (infoObj, key) => {
+    const createFilterItem = (infoObj, key, contentType) => {
         const filterItem = document.createElement("div");
         filterItem.setAttribute("class", "filter-item");
         filterItem.appendChild(createLabel(infoObj["label-text"]));
         filterItem.appendChild(
-            createInput(key, infoObj["label-text"], infoObj.type),
+            createInput(key, infoObj["label-text"], infoObj.type, contentType),
         );
 
         return filterItem;
     };
 
     // CREATE FILTER ITEM
-    const createFilterItems = (labelInfoObj, containerId) => {
+    const createFilterItems = (labelInfoObj, containerId, contentType) => {
         /*
             <div class="filter-item">
                 <label class="filter-item-label">Author:</label>
@@ -47,7 +47,7 @@ const FilterDom = (function FilterDom() {
         Object.entries(labelInfoObj).forEach(([key, value]) => {
             let item;
             try {
-                item = createFilterItem(value, key);
+                item = createFilterItem(value, key, contentType);
             } catch (error) {
                 throw new Error(
                     `In your /src/data/<content>LabelInfo.json you have a mistake at key: ${key}, error received: ${error}`,

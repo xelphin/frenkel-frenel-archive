@@ -24,7 +24,7 @@ const Filter = (function Filter() {
     const createFilterItems = (currContentType) => {
         const labelInfoObj = getLabelInfoObject(currContentType);
         const containerId = getFilterContainer(currContentType); // the id of the container where the filter-items will populate
-        FilterDom.createFilterItems(labelInfoObj, containerId);
+        FilterDom.createFilterItems(labelInfoObj, containerId, currContentType);
     };
 
     // Switch from showing filters of one content type, to another (example, from "articles"'s filters to "paintings"'s filters)
