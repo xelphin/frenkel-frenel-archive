@@ -10,17 +10,16 @@ const FetchData = (function FetchData() {
         "https://script.google.com/macros/s/AKfycbzumFKXgW69xcJCnB0L0o_19BdLqd_lJVValAFUv4OmxNCqH25V6uS2bAPn8kRTjZ6c/exec";
     const articlesIdToLinkUrl =
         "https://script.google.com/macros/s/AKfycbzUqW3MzqPAmGXl9dhIr1O6ouonTK0fkG7VQ6Hvo3VvOKfHbpqqk26MneOEb12dpOmH/exec";
-    const paintingsIdToLinkUrl = 
+    const paintingsIdToLinkUrl =
         "https://script.google.com/macros/s/AKfycbxI4qPV5fZ4Y4yHEeFxex1CP41RNCK-ydOm6uA-uVRdbq6pDg4mOOez4DPQ2c_OmtPGBw/exec";
 
-    
     const removeExtension = (str) => {
-        const lastDotIndex = str.lastIndexOf('.');
+        const lastDotIndex = str.lastIndexOf(".");
         if (lastDotIndex !== -1) {
             return str.substring(0, lastDotIndex);
-        } 
+        }
         return str;
-    }
+    };
 
     const fetchData = async (url) => {
         try {
@@ -85,8 +84,8 @@ const FetchData = (function FetchData() {
         }
         const obj = reOrganizeData(articlesIdToLink);
         console.log("Articles: ID to link: ", obj);
-        return obj; 
-    }
+        return obj;
+    };
 
     const fetchPaintingIdToLink = async () => {
         const paintingsIdToLink = await fetchData(paintingsIdToLinkUrl);
@@ -97,14 +96,14 @@ const FetchData = (function FetchData() {
         }
         const obj = reOrganizeData(paintingsIdToLink);
         console.log("Paintings: ID to link: ", obj);
-        return obj; 
-    }
+        return obj;
+    };
 
     return {
         fetchArticlesSheet,
         fetchPaintingsSheet,
         fetchArticlesIdToLink,
-        fetchPaintingIdToLink
+        fetchPaintingIdToLink,
     };
 })();
 

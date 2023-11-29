@@ -1,6 +1,6 @@
 import FilterDom from "./filterDom";
-import articlesLabelInfo from "../data/articlesLabelInfo.json";
-import paintingsLabelInfo from "../data/paintingsLabelInfo.json";
+import articlesFilterInfo from "../data/articlesFilterInfo.json";
+import paintingsFilterInfo from "../data/paintingsFilterInfo.json";
 
 const Filter = (function Filter() {
     const filterContainerIdPostFix = "-filter-container";
@@ -8,9 +8,9 @@ const Filter = (function Filter() {
     const getLabelInfoObject = (currContentType) => {
         switch (currContentType) {
             case "articles":
-                return articlesLabelInfo;
+                return articlesFilterInfo;
             case "paintings":
-                return paintingsLabelInfo;
+                return paintingsFilterInfo;
             default:
                 throw new Error(
                     "The data-content value received (currContentType), doesn't have a corresponding file in ./src/data or function Filter.getLabelInfoObject() hasn't been programmed to consider it",
