@@ -32,7 +32,7 @@ const FetchData = (function FetchData() {
             );
         }
         for (let i = 0; i < data.user.length; i += 1) {
-            obj[removeExtension(data.user[i].ID)] = data.user[i];
+            obj[removeExtension(data.user[i].id)] = data.user[i];
         }
         return obj;
     };
