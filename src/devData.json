@@ -1,0 +1,30 @@
+{
+    "articles": {
+        "name": "Articles",
+        "sourceLinks": {
+            "jsonUrl": "https://script.google.com/macros/s/AKfycbxJM7LWF55WxUhZCZ7NqGFQZMZE6zhqDtQ3gErnbRSnJ55zvW2UTSZbBlwzRC-PxacX5A/exec",
+            "idToLinkUrl": "https://script.google.com/macros/s/AKfycbz2pP0k9tTjXxu4SZKNui-QijPhd7PQIKbxMSM7BBHvWhRCNQDFeO6gRi6AbwC58jMp/exec"
+        },
+        "dom": {
+            "filterContainerId": "articles-filter-container",
+            "cardsContainerId": "articles-cards-container"
+        },
+        "functions": {
+            "cardCreationFunc": "createArticlesCard"
+        }
+    },
+    "paintings": {
+        "name": "Paintings",
+        "sourceLinks": {
+            "jsonUrl": "https://script.google.com/macros/s/AKfycbzumFKXgW69xcJCnB0L0o_19BdLqd_lJVValAFUv4OmxNCqH25V6uS2bAPn8kRTjZ6c/exec",
+            "idToLinkUrl": "https://script.google.com/macros/s/AKfycbxI4qPV5fZ4Y4yHEeFxex1CP41RNCK-ydOm6uA-uVRdbq6pDg4mOOez4DPQ2c_OmtPGBw/exec"
+        },
+        "dom": {
+            "filterContainerId": "paintings-filter-container",
+            "cardsContainerId": "paintings-cards-container"
+        },
+        "functions": {
+            "cardCreationFunc": "createPaintingsCard"
+        }
+    }
+}
