@@ -1,0 +1,202 @@
+{
+    "articles": {
+        "name": "Articles",
+        "sourceLinks": {
+            "jsonUrl": "https://script.google.com/macros/s/AKfycbwNbzT-gLNUYhqBLqQZZFBTPyXe-dUgDT5uZuO89i6QwkVXCYDKTmZfkUhFSJYFurXUaQ/exec",
+            "idToLinkUrl": "https://script.google.com/macros/s/AKfycbz7nsnK3-T-ztazlsjcqKRLCyUTvJ5uLz07nS3nFHbsPTeSXXtaIiZVH8p8cRlEBq4b/exec"
+        },
+        "dom": {
+            "filterContainerId": "articles-filter-container",
+            "cardsContainerId": "articles-cards-container"
+        },
+        "functions": {
+            "cardCreationFunc": "createArticleCard"
+        },
+        "filterLabels": {
+            "title": {
+                "label-text": "Title",
+                "database-name": "title",
+                "type": "text",
+                "application": "simmilar",
+                "data-language": "multi"
+            },
+            "source": {
+                "label-text": "Source",
+                "database-name": "source",
+                "type": "text",
+                "application": "simmilar",
+                "data-language": "multi"
+            },
+            "author": {
+                "label-text": "Author",
+                "database-name": "author",
+                "type": "text",
+                "application": "simmilar",
+                "data-language": "multi"
+            },
+            "description": {
+                "label-text": "Description",
+                "database-name": "description",
+                "type": "text",
+                "application": "simmilar",
+                "data-language": "multi"
+            },
+            "language": {
+                "label-text": "Language",
+                "database-name": "language",
+                "type": "text",
+                "application": "exact",
+                "data-language": "english"
+            },
+            "min-date": {
+                "label-text": "From",
+                "database-name": "date",
+                "type": "date",
+                "application": "range-min",
+                "data-language": ""
+            },
+            "max-date": {
+                "label-text": "To",
+                "database-name": "date",
+                "type": "date",
+                "application": "range-max",
+                "data-language": ""
+            },
+            "tags": {
+                "label-text": "Tags",
+                "database-name": "tags",
+                "type": "text",
+                "application": "simmilar-tags",
+                "data-language": "english"
+            },
+            "min-pages": {
+                "label-text": "Min Pages",
+                "database-name": "pagesTotal",
+                "type": "number",
+                "application": "range-min",
+                "data-language": ""
+            },
+            "max-pages": {
+                "label-text": "Max Pages",
+                "database-name": "pagesTotal",
+                "type": "number",
+                "application": "range-max",
+                "data-language": ""
+            },
+            "from-website": {
+                "label-text": "From Website",
+                "database-name": "WwebsiteLink",
+                "type": "checkbox",
+                "application": "has-input",
+                "data-language": ""
+            }
+        }
+    },
+    "paintings": {
+        "name": "Paintings",
+        "sourceLinks": {
+            "jsonUrl": "https://script.google.com/macros/s/AKfycbwypHRg22rGgLXxo_zmk2nAFVbcwK6UFiEZHhjuBGa2xzos5zGJla5oyrXY9jRrCssW/exec",
+            "idToLinkUrl": "https://script.google.com/macros/s/AKfycbxdsUI-2cAYtSVC6UYAExtKNLnl_hAuOIf2h5exlHnWV6JLCcvfQ2_B0NLa1D32P9sDIQ/exec"
+        },
+        "dom": {
+            "filterContainerId": "paintings-filter-container",
+            "cardsContainerId": "paintings-cards-container"
+        },
+        "functions": {
+            "cardCreationFunc": "createPaintingCard"
+        },
+        "filterLabels": {
+            "title": {
+                "label-text": "Title",
+                "database-name": "title",
+                "type": "text",
+                "application": "simmilar",
+                "data-language": "multi"
+            },
+            "min-year": {
+                "label-text": "From",
+                "database-name": "yearStart",
+                "type": "number",
+                "application": "range-min",
+                "data-language": ""
+            },
+            "max-year": {
+                "label-text": "Till",
+                "database-name": "yearStart",
+                "type": "number",
+                "application": "range-max",
+                "data-language": ""
+            },
+            "min-length": {
+                "label-text": "Min Length",
+                "database-name": "length",
+                "type": "number",
+                "application": "range-min",
+                "data-language": ""
+            },
+            "max-length": {
+                "label-text": "Max Length",
+                "database-name": "length",
+                "type": "number",
+                "application": "range-max",
+                "data-language": ""
+            },
+            "min-width": {
+                "label-text": "Min Width",
+                "database-name": "width",
+                "type": "number",
+                "application": "range-min",
+                "data-language": ""
+            },
+            "max-width": {
+                "label-text": "Max Width",
+                "database-name": "width",
+                "type": "number",
+                "application": "range-max",
+                "data-language": ""
+            },
+            "source": {
+                "label-text": "Source",
+                "database-name": "source",
+                "type": "text",
+                "application": "simmilar",
+                "data-language": "multi"
+            },
+            "medium": {
+                "label-text": "Medium",
+                "database-name": "medium",
+                "type": "text",
+                "application": "simmilar",
+                "data-language": "multi"
+            },
+            "style": {
+                "label-text": "Style",
+                "database-name": "style",
+                "type": "text",
+                "application": "simmilar",
+                "data-language": "multi"
+            },
+            "type": {
+                "label-text": "Type",
+                "database-name": "type",
+                "type": "text",
+                "application": "simmilar",
+                "data-language": "multi"
+            },
+            "theme": {
+                "label-text": "Theme",
+                "database-name": "theme",
+                "type": "text",
+                "application": "simmilar",
+                "data-language": "multi"
+            },
+            "people": {
+                "label-text": "People",
+                "database-name": "people",
+                "type": "text",
+                "application": "simmilar",
+                "data-language": "multi"
+            }
+        }
+    }
+}
