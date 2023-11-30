@@ -64,7 +64,9 @@ const FilterDom = (function FilterDom() {
 
         for (let i = 0; i < children.length; i += 1) {
             const child = children[i];
-            child.style.display = "none";
+            if (child.classList.contains("specific-filter-container")) {
+                child.style.display = "none";
+            }
         }
     };
 
