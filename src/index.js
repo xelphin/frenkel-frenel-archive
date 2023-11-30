@@ -35,13 +35,9 @@ Object.entries(devData).forEach(([content, data]) => {
     );
 
     // Create cards
-    Promise.all([sheet, idToLink])
-        .then((results) => {
-            Cards.createCards(results[0], results[1], content);
-        })
-        .catch((error) => {
-            throw new Error(`Problem with creating ${data.name}: ${error}`);
-        });
+    Promise.all([sheet, idToLink]).then((results) => {
+        Cards.createCards(results[0], results[1], content);
+    });
 });
 // Note: 'content' means: articles, paintings...
 

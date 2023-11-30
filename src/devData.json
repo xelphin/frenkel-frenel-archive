@@ -10,7 +10,7 @@
             "cardsContainerId": "articles-cards-container"
         },
         "functions": {
-            "cardCreationFunc": "createArticlesCard"
+            "cardCreationFunc": "createArticleCard"
         },
         "filterLabels": {
             "title": {
@@ -96,14 +96,14 @@
         "name": "Paintings",
         "sourceLinks": {
             "jsonUrl": "https://script.google.com/macros/s/AKfycbwypHRg22rGgLXxo_zmk2nAFVbcwK6UFiEZHhjuBGa2xzos5zGJla5oyrXY9jRrCssW/exec",
-            "idToLinkUrl": "https://script.google.com/macros/s/AKfycbwYQNVjme9KjwJ971-NaqB0SOPdM7n-WmNaNDsENJIthfZ-g7H8VF_fI5LMgisLfwKtxQ/exec"
+            "idToLinkUrl": "https://script.google.com/macros/s/AKfycbxdsUI-2cAYtSVC6UYAExtKNLnl_hAuOIf2h5exlHnWV6JLCcvfQ2_B0NLa1D32P9sDIQ/exec"
         },
         "dom": {
             "filterContainerId": "paintings-filter-container",
             "cardsContainerId": "paintings-cards-container"
         },
         "functions": {
-            "cardCreationFunc": "createPaintingsCard"
+            "cardCreationFunc": "createPaintingCard"
         },
         "filterLabels": {
             "title": {
@@ -198,6 +198,5 @@
                 "data-language": "multi"
             }
         }
-        
     }
 }

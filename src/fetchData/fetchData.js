@@ -1,4 +1,9 @@
 const FetchData = (function FetchData() {
+    const getExtension = (str) => {
+        if (str.lastIndexOf(".") === -1) return "";
+        return str.split(".")[1];
+    };
+
     const removeExtension = (str) => {
         const lastDotIndex = str.lastIndexOf(".");
         if (lastDotIndex !== -1) {
@@ -32,7 +37,9 @@ const FetchData = (function FetchData() {
             );
         }
         for (let i = 0; i < data.user.length; i += 1) {
+            const ext = getExtension(data.user[i].id);
             obj[removeExtension(data.user[i].id)] = data.user[i];
+            obj[removeExtension(data.user[i].id)].extension = ext;
         }
         return obj;
     };
