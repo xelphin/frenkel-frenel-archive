@@ -99,6 +99,8 @@ const FetchData = (function FetchData() {
         return obj;
     };
 
+    // TODO: make a general fetch() , that does a switch between the above four (instead of copying code)
+
     return {
         fetchArticlesSheet,
         fetchPaintingsSheet,

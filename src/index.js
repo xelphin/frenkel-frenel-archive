@@ -4,7 +4,21 @@ import "./stylesheets/style.scss";
 import Menu from "./menu/menu";
 import FetchData from "./fetchData/fetchData";
 
-Menu.init();
+// GENERAL REDIRECTOR for the various modules
+const GeneralRedirector = (function GeneralRedirector() {
+    const showCardsFor = (newContentType) => {
+        console.log("TODO: Show cards for: ", newContentType);
+        // TODO: implement
+    };
+
+    return {
+        showCardsFor,
+    };
+})();
+
+// INIT
+
+Menu.init(GeneralRedirector);
 
 FetchData.fetchArticlesSheet();
 FetchData.fetchPaintingsSheet();

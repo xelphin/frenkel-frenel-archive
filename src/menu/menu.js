@@ -2,21 +2,18 @@ import Filter from "./filters/filter";
 import MenuDom from "./menuDom";
 
 const Menu = (function Menu() {
-    // let switchContentCallback = [receive as argument from Menu.init()]
+    let GeneralRedirector;
 
     // Callback for '<content>-selector's when they're clicked
     const clickSwitchContent = (target) => {
-        const switchTo = target.getAttribute("data-content");
-        console.log("Show content for: ", switchTo);
-        Filter.switchToContent(switchTo);
-        // TODO
-        // Menu.init() will also get a callback declared in index.js
-        //      it will switch between the cards to show (article cards, painting cards...)
-        //      it will be called here: switchContentCallback()
+        const newContentType = target.getAttribute("data-content");
+        Filter.switchToContent(newContentType);
+        GeneralRedirector.showCardsFor(newContentType);
     };
 
     // INIT
-    const init = (firstShow = "articles") => {
+    const init = (generalRedirectorModule, firstShow = "articles") => {
+        GeneralRedirector = generalRedirectorModule;
         Filter.init(firstShow);
         MenuDom.init(clickSwitchContent);
     };
