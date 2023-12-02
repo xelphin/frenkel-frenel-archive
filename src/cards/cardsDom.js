@@ -16,6 +16,8 @@ const CardsDom = (function CardsDom() {
     }
     
     const createImageNode = (imageLink, ext) => {
+        const imgContainer = document.createElement("div");
+        imgContainer.classList.add("card-image-container");
         const img = document.createElement("img");
         img.classList.add("card-image");
         if (imageLink !== "" && (ext === "jpg" || ext === "jpeg" || ext === "png" || ext === "pdf")) {
@@ -24,31 +26,51 @@ const CardsDom = (function CardsDom() {
         } else {
             img.src = errorImg;
         }
-        return img;
+        imgContainer.appendChild(img);
+        return imgContainer;
     };
 
-    const createTextNode = (cardData) => {
+    const addContentSpecificText = (textDiv,cardData, cardsText) => {
+        const keys = Object.keys(cardsText);
+        for (let i = 0; i < keys.length; i += 1) {
+            const textElem = document.createElement("h3");
+            const key = keys[i];                                            // "year"
+            const showLabelName = cardsText[key]["label-text"];             // "Year"
+            const databaseLabelName = cardsText[key]["database-name"];      // "yearStart"
+            const textValue = cardData[databaseLabelName];                  // "1950"
+            if (textValue == "" && cardsText[key]["dont-show-if-empty"] == true) {
+                textElem.textContent = "-";
+            } else {
+                textElem.textContent = `${showLabelName}: ${textValue}`;
+            }
+            textDiv.appendChild(textElem);
+        }
+    }
+
+    const createTextNode = (cardData, cardsText) => {
         const textDiv = document.createElement("div");
+        textDiv.classList.add("card-text-container");
         const idText = document.createElement("h3");
-        idText.textContent = cardData.id;
+        idText.textContent = `ID: ${cardData.id}`;
+        addContentSpecificText(textDiv,cardData, cardsText);
         textDiv.appendChild(idText);
         return textDiv;
-    };
-
-    const cardGeneric = (cardData, imageLink, extension, containerId) => {
-        const container = document.querySelector(`#${containerId}`);
-        const card = document.createElement("div");
-        card.id = cardData.id;
-        card.classList.add("card");
-        card.appendChild(createImageNode(imageLink, extension));
-        card.appendChild(createTextNode(cardData));
-        container.appendChild(card);
-        return card;
     };
 
     // ------------------------------
     //      EXPORTED FUNCTIONS
     // ------------------------------
+
+    const cardCreator = (cardData, imageLink, extension, containerId, cardsText) => {
+        const container = document.querySelector(`#${containerId}`);
+        const card = document.createElement("div");
+        card.id = cardData.id;
+        card.classList.add("card");
+        card.appendChild(createImageNode(imageLink, extension));
+        card.appendChild(createTextNode(cardData, cardsText));
+        container.appendChild(card);
+        return card;
+    };
 
     const hideCardsContainer = (containerId) => {
         console.log("Container ID, hiding: ", containerId);
@@ -62,24 +84,12 @@ const CardsDom = (function CardsDom() {
         container.style.display = "flex";
     }
 
-    const createArticleCard = (cardData, imageLink, extension, containerId) => {
-        cardGeneric(cardData, imageLink, extension, containerId);
-    };
 
-    const createPaintingCard = (
-        cardData,
-        imageLink,
-        extension,
-        containerId,
-    ) => {
-        cardGeneric(cardData, imageLink, extension, containerId);
-    };
 
     return {
         hideCardsContainer,
         showCardsContainer,
-        createArticleCard,
-        createPaintingCard,
+        cardCreator
     };
 })();
 

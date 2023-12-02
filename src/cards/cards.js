@@ -32,21 +32,21 @@ const Cards = (function Cards() {
     // ------------------------------
 
     const createCards = (data, idToLinkObj, contentType) => {
-        const cardCreatorFunction =
-            devData[contentType].functions.cardCreationFunc;
         const cardContainerId = devData[contentType].dom.cardsContainerId;
+        const cardsText = devData[contentType].cardsText;
         // Create card
         const keys = Object.keys(data);
         for (let i = 0; i < keys.length; i += 1) {
             const key = keys[i];
             const matchingLink = getMatchingLink(key, idToLinkObj, contentType);
             const extension = getMatchingExt(key, idToLinkObj, contentType);
-            CardsDom[cardCreatorFunction](
+            CardsDom.cardCreator(
                 data[key],
                 matchingLink,
                 extension,
                 cardContainerId,
-            );
+                cardsText
+            )
         }
     };
 
