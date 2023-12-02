@@ -1,20 +1,26 @@
 const CardsDom = (function CardsDom() {
+
+    // ------------------------------
+    //       HELPER FUNCTIONS
+    // ------------------------------
+
     // https://drive.google.com/uc?export=view&id=[image_id]
-    const prefixImg = "https://drive.google.com/uc?export=view&id=";
+    // const prefixImg = "https://drive.google.com/uc?export=view&id=";
     // https://drive.google.com/thumbnail?id=[pdf_id]
-    const prefixPdf = "https://drive.google.com/thumbnail?id=";
+    const prefixThumbnail = "https://drive.google.com/thumbnail?id=";
     const errorImg =
         "https://drive.google.com/uc?export=view&id=1CRo72lZ3iGl28hoDaUmSkv7ojBTxUipa";
 
+    const getImageItself = (imageLink) => {
+        return prefixThumbnail + imageLink;
+    }
+    
     const createImageNode = (imageLink, ext) => {
         const img = document.createElement("img");
         img.classList.add("card-image");
-        if (imageLink !== "") {
-            if (ext === "jpg" || ext === "jpeg" || ext === "png") {
-                img.src = prefixImg + imageLink;
-            } else if (ext === "pdf") {
-                img.src = prefixPdf + imageLink;
-            }
+        if (imageLink !== "" && (ext === "jpg" || ext === "jpeg" || ext === "png" || ext === "pdf")) {
+            img.src = getImageItself(imageLink);
+            
         } else {
             img.src = errorImg;
         }
@@ -40,6 +46,22 @@ const CardsDom = (function CardsDom() {
         return card;
     };
 
+    // ------------------------------
+    //      EXPORTED FUNCTIONS
+    // ------------------------------
+
+    const hideCardsContainer = (containerId) => {
+        console.log("Container ID, hiding: ", containerId);
+        const container = document.querySelector(`#${containerId}`);
+        container.style.display = "none";
+    }
+
+    const showCardsContainer = (containerId) => {
+        console.log("Container ID, showing: ", containerId);
+        const container = document.querySelector(`#${containerId}`);
+        container.style.display = "flex";
+    }
+
     const createArticleCard = (cardData, imageLink, extension, containerId) => {
         cardGeneric(cardData, imageLink, extension, containerId);
     };
@@ -54,6 +76,8 @@ const CardsDom = (function CardsDom() {
     };
 
     return {
+        hideCardsContainer,
+        showCardsContainer,
         createArticleCard,
         createPaintingCard,
     };
