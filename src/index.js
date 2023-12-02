@@ -10,8 +10,7 @@ import devData from "./devData.json";
 // GENERAL REDIRECTOR for the various modules
 const GeneralRedirector = (function GeneralRedirector() {
     const showCardsFor = (newContentType) => {
-        console.log("TODO: Show cards for: ", newContentType);
-        // TODO: implement
+        Cards.showCardsFor(newContentType);
     };
 
     return {
@@ -19,10 +18,9 @@ const GeneralRedirector = (function GeneralRedirector() {
     };
 })();
 
-// INIT
-
-Menu.init(GeneralRedirector);
-
+// ------------------------------
+//      FETCH DATABSE DATA
+// ------------------------------
 Object.entries(devData).forEach(([content, data]) => {
     // Fetch data
     const sheet = FetchData.fetchObject(
@@ -43,5 +41,11 @@ Object.entries(devData).forEach(([content, data]) => {
 
 /*
 To be able to extract google sheet data, I followed video: https://www.youtube.com/watch?v=uJDLT8nh2ps
-Those are the links I ended up creating the 'jsonUrl's
+Using the above menthos, i created the: 'jsonUrl's
 */
+
+// ------------------------------
+//             INIT
+// ------------------------------
+Menu.init(GeneralRedirector, Object.keys(devData)[0]);
+GeneralRedirector.showCardsFor(Object.keys(devData)[0]); // Note: This is why it's important to hard code the containers in index.html

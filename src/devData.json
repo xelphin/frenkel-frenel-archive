@@ -9,9 +9,6 @@
             "filterContainerId": "articles-filter-container",
             "cardsContainerId": "articles-cards-container"
         },
-        "functions": {
-            "cardCreationFunc": "createArticleCard"
-        },
         "filterLabels": {
             "title": {
                 "label-text": "Title",
@@ -85,10 +82,37 @@
             },
             "from-website": {
                 "label-text": "From Website",
-                "database-name": "WwebsiteLink",
+                "database-name": "websiteLink",
                 "type": "checkbox",
                 "application": "has-input",
                 "data-language": ""
+            }
+        },
+        "cardsText": {
+            "title": {
+                "label-text": "Title",
+                "database-name": "title",
+                "dont-show-if-empty": true
+            },
+            "source": {
+                "label-text": "Source",
+                "database-name": "source",
+                "dont-show-if-empty": true
+            },
+            "author": {
+                "label-text": "Author",
+                "database-name": "author",
+                "dont-show-if-empty": true
+            },
+            "date": {
+                "label-text": "Date",
+                "database-name": "date",
+                "dont-show-if-empty": true
+            },
+            "website": {
+                "label-text": "Web",
+                "database-name": "websiteLink",
+                "dont-show-if-empty": true
             }
         }
     },
@@ -101,9 +125,6 @@
         "dom": {
             "filterContainerId": "paintings-filter-container",
             "cardsContainerId": "paintings-cards-container"
-        },
-        "functions": {
-            "cardCreationFunc": "createPaintingCard"
         },
         "filterLabels": {
             "title": {
@@ -196,6 +217,33 @@
                 "type": "text",
                 "application": "simmilar",
                 "data-language": "multi"
+            }
+        },
+        "cardsText": {
+            "title": {
+                "label-text": "Title",
+                "database-name": "title",
+                "dont-show-if-empty": true
+            },
+            "year": {
+                "label-text": "Year",
+                "database-name": "yearStart",
+                "dont-show-if-empty": true
+            },
+            "source": {
+                "label-text": "Source",
+                "database-name": "source",
+                "dont-show-if-empty": true
+            },
+            "article": {
+                "label-text": "Article",
+                "database-name": "fromArticle",
+                "dont-show-if-empty": true
+            },
+            "website": {
+                "label-text": "Web",
+                "database-name": "fromWebsite",
+                "dont-show-if-empty": true
             }
         }
     }
