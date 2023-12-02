@@ -89,27 +89,27 @@
             }
         },
         "cardsText": {
-            "title" : {
+            "title": {
                 "label-text": "Title",
                 "database-name": "title",
                 "dont-show-if-empty": true
             },
-            "source" : {
+            "source": {
                 "label-text": "Source",
                 "database-name": "source",
                 "dont-show-if-empty": true
             },
-            "author" : {
+            "author": {
                 "label-text": "Author",
                 "database-name": "author",
                 "dont-show-if-empty": true
             },
-            "date" : {
+            "date": {
                 "label-text": "Date",
                 "database-name": "date",
                 "dont-show-if-empty": true
             },
-            "website" : {
+            "website": {
                 "label-text": "Web",
                 "database-name": "websiteLink",
                 "dont-show-if-empty": true
@@ -220,27 +220,27 @@
             }
         },
         "cardsText": {
-            "title" : {
+            "title": {
                 "label-text": "Title",
                 "database-name": "title",
                 "dont-show-if-empty": true
             },
-            "year" : {
+            "year": {
                 "label-text": "Year",
                 "database-name": "yearStart",
                 "dont-show-if-empty": true
             },
-            "source" : {
+            "source": {
                 "label-text": "Source",
                 "database-name": "source",
                 "dont-show-if-empty": true
             },
-            "article" : {
+            "article": {
                 "label-text": "Article",
                 "database-name": "fromArticle",
                 "dont-show-if-empty": true
             },
-            "website" : {
+            "website": {
                 "label-text": "Web",
                 "database-name": "fromWebsite",
                 "dont-show-if-empty": true

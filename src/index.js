@@ -36,7 +36,7 @@ Object.entries(devData).forEach(([content, data]) => {
     Promise.all([sheet, idToLink]).then((results) => {
         Cards.createCards(results[0], results[1], content);
     });
-})
+});
 // Note: 'content' means: articles, paintings...
 
 /*
@@ -49,6 +49,3 @@ Using the above menthos, i created the: 'jsonUrl's
 // ------------------------------
 Menu.init(GeneralRedirector, Object.keys(devData)[0]);
 GeneralRedirector.showCardsFor(Object.keys(devData)[0]); // Note: This is why it's important to hard code the containers in index.html
-
-
-

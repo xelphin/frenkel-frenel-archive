@@ -2,7 +2,6 @@ import CardsDom from "./cardsDom";
 import devData from "../devData.json";
 
 const Cards = (function Cards() {
-
     // ------------------------------
     //       HELPER FUNCTIONS
     // ------------------------------
@@ -33,7 +32,7 @@ const Cards = (function Cards() {
 
     const createCards = (data, idToLinkObj, contentType) => {
         const cardContainerId = devData[contentType].dom.cardsContainerId;
-        const cardsText = devData[contentType].cardsText;
+        const {cardsText} = devData[contentType];
         // Create card
         const keys = Object.keys(data);
         for (let i = 0; i < keys.length; i += 1) {
@@ -45,8 +44,8 @@ const Cards = (function Cards() {
                 matchingLink,
                 extension,
                 cardContainerId,
-                cardsText
-            )
+                cardsText,
+            );
         }
     };
 
@@ -61,13 +60,11 @@ const Cards = (function Cards() {
                 CardsDom.showCardsContainer(containerId);
             }
         }
-    }
-
-    
+    };
 
     return {
         createCards,
-        showCardsFor
+        showCardsFor,
     };
 })();
 
