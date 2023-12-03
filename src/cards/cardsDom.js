@@ -1,17 +1,9 @@
 const CardsDom = (function CardsDom() {
+    let dataFunctionsMod;
 
     // ------------------------------
     //       HELPER FUNCTIONS
     // ------------------------------
-
-    // https://drive.google.com/uc?export=view&id=[image_id]
-    // const prefixImg = "https://drive.google.com/uc?export=view&id=";
-    // https://drive.google.com/thumbnail?id=[pdf_id]
-    const prefixThumbnail = "https://drive.google.com/thumbnail?id=";
-    const errorImg =
-        "https://drive.google.com/uc?export=view&id=1CRo72lZ3iGl28hoDaUmSkv7ojBTxUipa";
-
-    const getImageItself = (imageLink) => prefixThumbnail + imageLink;
 
     const createImageNode = (imageLink, ext) => {
         const imgContainer = document.createElement("div");
@@ -22,9 +14,9 @@ const CardsDom = (function CardsDom() {
             imageLink !== "" &&
             (ext === "jpg" || ext === "jpeg" || ext === "png" || ext === "pdf")
         ) {
-            img.src = getImageItself(imageLink);
+            img.src = dataFunctionsMod.getThumbnailImg(imageLink);
         } else {
-            img.src = errorImg;
+            img.src = dataFunctionsMod.getErrorImg();
         }
         imgContainer.appendChild(img);
         return imgContainer;
@@ -87,10 +79,15 @@ const CardsDom = (function CardsDom() {
         container.style.display = "flex";
     };
 
+    const init = (dataFunctions) => {
+        dataFunctionsMod = dataFunctions;
+    }
+
     return {
         hideCardsContainer,
         showCardsContainer,
-        cardCreator
+        cardCreator,
+        init
     };
 })();
 

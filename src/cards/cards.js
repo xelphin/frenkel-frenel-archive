@@ -11,7 +11,8 @@ const Cards = (function Cards() {
     //      EXPORTED FUNCTIONS
     // ------------------------------
 
-    const createCards = (cardsParam) => {
+    const createCards = (cardsParam, dataFunctionsMod) => {
+        CardsDom.init(dataFunctionsMod);
         // Create card
         const keys = Object.keys(cardsParam);
         for (let i = 0; i < keys.length; i += 1) {

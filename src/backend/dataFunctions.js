@@ -16,6 +16,9 @@ Maybe put all the 'data' files and folders inside of a 'backend' folder
 
 import devData from "../devData.json";
 
+// IMPORTANT: Don't add module imports or be very careful, this is a PUB module, like a utility,
+//            shouldn't import things from front-end
+
 const DataFunctions = (function DataFunctions() {
 
     const getMatchingLink = (id, idToLinkObj, contentType) => {
@@ -41,7 +44,7 @@ const DataFunctions = (function DataFunctions() {
     const getCardContainerId = (contentType) => devData[contentType].dom.cardsContainerId;
 
     const fromDataGetCardsCreationParameters = (data, idToLinkObj, contentType) => {
-        let cardsCreationParams = {};
+        const cardsCreationParams = {};
         const cardContainerId = getCardContainerId(contentType);
         const {cardsText} = devData[contentType];
         // Create card parameters
@@ -54,9 +57,9 @@ const DataFunctions = (function DataFunctions() {
             cardsCreationParams[idOfItem] = {
                 cardData: data[idOfItem],       // ex: title: [], language: [], author: [], ...
                 imageLink: matchingLink,        // ex: "https://[image-of-card]"
-                extension: extension,           // ex: ".jpg"
+                extension,                      // ex: ".jpg"
                 containerId: cardContainerId,   // ex: "articles-cards-container"
-                cardsText: cardsText            // ex: title: [], author: [], ...
+                cardsText                       // ex: title: [], author: [], ...
             }
         }
         return cardsCreationParams;
