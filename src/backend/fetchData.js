@@ -1,3 +1,6 @@
+// IMPORTANT: Don't add module imports or be very careful, this is a PUB module, like a utility,
+//            shouldn't import things from front-end
+
 const FetchData = (function FetchData() {
     const getExtension = (str) => {
         if (str.lastIndexOf(".") === -1) return "";
