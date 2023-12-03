@@ -92,27 +92,37 @@
             "title": {
                 "label-text": "Title",
                 "database-name": "title",
-                "dont-show-if-empty": true
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false
             },
             "source": {
                 "label-text": "Source",
                 "database-name": "source",
-                "dont-show-if-empty": true
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false
             },
             "author": {
                 "label-text": "Author",
                 "database-name": "author",
-                "dont-show-if-empty": true
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false
             },
             "date": {
                 "label-text": "Date",
                 "database-name": "date",
-                "dont-show-if-empty": true
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false
             },
             "website": {
                 "label-text": "Web",
                 "database-name": "websiteLink",
-                "dont-show-if-empty": true
+                "dont-show-if-empty": true,
+                "is-external-link": true,
+                "is-link-to-other-database": false
             }
         }
     },
@@ -223,27 +233,38 @@
             "title": {
                 "label-text": "Title",
                 "database-name": "title",
-                "dont-show-if-empty": true
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false
             },
             "year": {
                 "label-text": "Year",
                 "database-name": "yearStart",
-                "dont-show-if-empty": true
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false
             },
             "source": {
                 "label-text": "Source",
                 "database-name": "source",
-                "dont-show-if-empty": true
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false
             },
             "article": {
                 "label-text": "Article",
                 "database-name": "fromArticle",
-                "dont-show-if-empty": true
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": true,
+                "database-link-name": "articles"
             },
             "website": {
                 "label-text": "Web",
                 "database-name": "fromWebsite",
-                "dont-show-if-empty": true
+                "dont-show-if-empty": true,
+                "is-external-link": true,
+                "is-link-to-other-database": false
             }
         }
     }

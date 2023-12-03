@@ -4,7 +4,7 @@ import "./stylesheets/style.scss";
 import Menu from "./menu/menu";
 import FetchData from "./backend/fetchData";
 import Cards from "./cards/cards";
-import DataFunctions from "./backend/dataFunctions"
+import DataFunctions from "./backend/dataFunctions";
 // JSON
 import devData from "./devData.json";
 
@@ -12,9 +12,10 @@ import devData from "./devData.json";
 //             INIT
 // ------------------------------
 
+const allFetchedData = {};
+
 // FETCH DATA
-Object.entries(devData).forEach(([content, data]) => {
-    // Fetch data
+const fetchedAllData = Object.entries(devData).map(([content, data]) => {
     const sheet = FetchData.fetchObject(
         data.sourceLinks.jsonUrl,
         `${data.name}, fetch from jsonUrl`,
@@ -24,12 +25,30 @@ Object.entries(devData).forEach(([content, data]) => {
         `${data.name}, fetch from idToLinkUrl`,
     );
 
-    // RENDER DATA
-    Promise.all([sheet, idToLink]).then((results) => {
-        const cardsParams = DataFunctions.fromDataGetCardsCreationParameters(results[0], results[1], content);
-        Cards.createCards(cardsParams, DataFunctions);
+    return Promise.all([sheet, idToLink]).then((results) => {
+        const cardsParams = DataFunctions.fromDataGetCardsCreationParameters(
+            results[0],
+            results[1],
+            content,
+        );
+        allFetchedData[content] = {
+            sheet: results[0],
+            idToLink: results[1],
+            cardsParams,
+        };
     });
 });
+
+// RENDER DATA
+Promise.all(fetchedAllData).then(() => {
+    DataFunctions.init(allFetchedData);
+    //
+    Object.entries(allFetchedData).forEach(([content, data]) => {
+        console.log("Creating cards for: ", content);
+        Cards.createCards(data.cardsParams, DataFunctions);
+    });
+});
+
 // Note: 'content' means: articles, paintings...
 
 /*
@@ -37,6 +56,6 @@ To be able to extract google sheet data, I followed video: https://www.youtube.c
 Using the above menthod, i created the: 'jsonUrl's
 */
 
-//  COSTUMIZE DOM
+//  COSTUMIZE DOM (that can be done before all data was fetched)
 Menu.init(Cards.showCardsFor, Object.keys(devData)[0]);
 Cards.showCardsFor(Object.keys(devData)[0]); // Note: This is why it's important to hard code the containers in index.html

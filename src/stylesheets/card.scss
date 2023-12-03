@@ -36,7 +36,9 @@
             justify-content: start;
             text-align: start;
 
-            h3 {
+            h3,
+            div,
+            a {
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
