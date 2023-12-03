@@ -1,4 +1,5 @@
 const CardsDom = (function CardsDom() {
+
     // ------------------------------
     //       HELPER FUNCTIONS
     // ------------------------------
@@ -63,19 +64,13 @@ const CardsDom = (function CardsDom() {
     //      EXPORTED FUNCTIONS
     // ------------------------------
 
-    const cardCreator = (
-        cardData,
-        imageLink,
-        extension,
-        containerId,
-        cardsText,
-    ) => {
-        const container = document.querySelector(`#${containerId}`);
+    const cardCreator = (cardParam) => {
+        const container = document.querySelector(`#${cardParam.containerId}`);
         const card = document.createElement("div");
-        card.id = cardData.id;
+        card.id = cardParam.cardData.id;
         card.classList.add("card");
-        card.appendChild(createImageNode(imageLink, extension));
-        card.appendChild(createTextNode(cardData, cardsText));
+        card.appendChild(createImageNode(cardParam.imageLink, cardParam.extension));
+        card.appendChild(createTextNode(cardParam.cardData, cardParam.cardsText));
         container.appendChild(card);
         return card;
     };
@@ -95,7 +90,7 @@ const CardsDom = (function CardsDom() {
     return {
         hideCardsContainer,
         showCardsContainer,
-        cardCreator,
+        cardCreator
     };
 })();
 

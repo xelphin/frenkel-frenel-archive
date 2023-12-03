@@ -2,8 +2,9 @@
 import "./stylesheets/style.scss";
 // JS
 import Menu from "./menu/menu";
-import FetchData from "./fetchData/fetchData";
+import FetchData from "./backend/fetchData";
 import Cards from "./cards/cards";
+import DataFunctions from "./backend/dataFunctions"
 // JSON
 import devData from "./devData.json";
 
@@ -14,13 +15,15 @@ const GeneralRedirector = (function GeneralRedirector() {
     };
 
     return {
-        showCardsFor,
+        showCardsFor
     };
 })();
 
 // ------------------------------
-//      FETCH DATABSE DATA
+//             INIT
 // ------------------------------
+
+// FETCH DATA
 Object.entries(devData).forEach(([content, data]) => {
     // Fetch data
     const sheet = FetchData.fetchObject(
@@ -32,9 +35,10 @@ Object.entries(devData).forEach(([content, data]) => {
         `${data.name}, fetch from idToLinkUrl`,
     );
 
-    // Create cards
+    // RENDER DATA
     Promise.all([sheet, idToLink]).then((results) => {
-        Cards.createCards(results[0], results[1], content);
+        const cardsParams = DataFunctions.fromDataGetCardsCreationParameters(results[0], results[1], content);
+        Cards.createCards(cardsParams);
     });
 });
 // Note: 'content' means: articles, paintings...
@@ -44,8 +48,6 @@ To be able to extract google sheet data, I followed video: https://www.youtube.c
 Using the above menthos, i created the: 'jsonUrl's
 */
 
-// ------------------------------
-//             INIT
-// ------------------------------
+//  COSTUMIZE DOM
 Menu.init(GeneralRedirector, Object.keys(devData)[0]);
 GeneralRedirector.showCardsFor(Object.keys(devData)[0]); // Note: This is why it's important to hard code the containers in index.html
