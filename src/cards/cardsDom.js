@@ -22,10 +22,28 @@ const CardsDom = (function CardsDom() {
         return imgContainer;
     };
 
+    const createExternalLink = (link) => {
+        // <a href="https://www.example.com" target="_blank">Visit Example.com</a>
+        const a = document.createElement("a");
+        a.href = link;
+        a.target = "_blank";
+        a.textContent = "Link";
+        return a;
+    };
+
+    const createDriveLink = (itemId, contentType) => {
+        // <a href="https://www.example.com" target="_blank">Visit Example.com</a>
+        const a = document.createElement("a");
+        a.href = dataFunctionsMod.getMatchingURL(itemId, contentType);
+        a.target = "_blank";
+        a.textContent = `Link To ${contentType}`;
+        return a;
+    };
+
     const addContentSpecificText = (textDiv, cardData, cardsText) => {
         const keys = Object.keys(cardsText);
         for (let i = 0; i < keys.length; i += 1) {
-            const textElem = document.createElement("h3");
+            let elem = document.createElement("h3");
             const key = keys[i]; // "year"
             const showLabelName = cardsText[key]["label-text"]; // "Year"
             const databaseLabelName = cardsText[key]["database-name"]; // "yearStart"
@@ -34,11 +52,19 @@ const CardsDom = (function CardsDom() {
                 textValue === "" &&
                 cardsText[key]["dont-show-if-empty"] === true
             ) {
-                textElem.textContent = "-";
+                elem.textContent = "-";
+            } else if (cardsText[key]["is-external-link"]) {
+                elem = createExternalLink(textValue);
+            } else if (cardsText[key]["is-link-to-other-database"]) {
+                const contentFrom = cardsText[key]["database-link-name"];
+                console.log(
+                    `so i have: id: ${textValue}, contentFrom ${contentFrom} `,
+                );
+                elem = createDriveLink(textValue, contentFrom);
             } else {
-                textElem.textContent = `${showLabelName}: ${textValue}`;
+                elem.textContent = `${showLabelName}: ${textValue}`;
             }
-            textDiv.appendChild(textElem);
+            textDiv.appendChild(elem);
         }
     };
 
@@ -61,8 +87,12 @@ const CardsDom = (function CardsDom() {
         const card = document.createElement("div");
         card.id = cardParam.cardData.id;
         card.classList.add("card");
-        card.appendChild(createImageNode(cardParam.imageLink, cardParam.extension));
-        card.appendChild(createTextNode(cardParam.cardData, cardParam.cardsText));
+        card.appendChild(
+            createImageNode(cardParam.imageLink, cardParam.extension),
+        );
+        card.appendChild(
+            createTextNode(cardParam.cardData, cardParam.cardsText),
+        );
         container.appendChild(card);
         return card;
     };
@@ -81,13 +111,13 @@ const CardsDom = (function CardsDom() {
 
     const init = (dataFunctions) => {
         dataFunctionsMod = dataFunctions;
-    }
+    };
 
     return {
         hideCardsContainer,
         showCardsContainer,
         cardCreator,
-        init
+        init,
     };
 })();
 

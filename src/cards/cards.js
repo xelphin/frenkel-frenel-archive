@@ -2,7 +2,6 @@ import CardsDom from "./cardsDom";
 import devData from "../devData.json";
 
 const Cards = (function Cards() {
-
     // ------------------------------
     //       HELPER FUNCTIONS
     // ------------------------------
@@ -34,10 +33,9 @@ const Cards = (function Cards() {
         }
     };
 
-
     return {
         createCards,
-        showCardsFor
+        showCardsFor,
     };
 })();
 
