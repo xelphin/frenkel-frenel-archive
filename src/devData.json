@@ -129,7 +129,7 @@
     "paintings": {
         "name": "Paintings",
         "sourceLinks": {
-            "jsonUrl": "https://script.google.com/macros/s/AKfycbwypHRg22rGgLXxo_zmk2nAFVbcwK6UFiEZHhjuBGa2xzos5zGJla5oyrXY9jRrCssW/exec",
+            "jsonUrl": "https://script.google.com/macros/s/AKfycby9RF9alSsemIqOTAxN2jOemIoOKm5AUvmrTod2sUClzQrSgX-0jAvSQteI3dgboxdb/exec",
             "idToLinkUrl": "https://script.google.com/macros/s/AKfycbxdsUI-2cAYtSVC6UYAExtKNLnl_hAuOIf2h5exlHnWV6JLCcvfQ2_B0NLa1D32P9sDIQ/exec"
         },
         "dom": {
@@ -261,7 +261,7 @@
             },
             "website": {
                 "label-text": "Web",
-                "database-name": "fromWebsite",
+                "database-name": "websiteLink",
                 "dont-show-if-empty": true,
                 "is-external-link": true,
                 "is-link-to-other-database": false

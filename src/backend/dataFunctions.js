@@ -47,6 +47,13 @@ const DataFunctions = (function DataFunctions() {
         return prefix + idToLinkObj[id].link + postfix;
     };
 
+    const getMatchingWebsiteLink = (id, contentType) => {
+        if ("websiteLink" in allFetchedData[contentType].sheet[id]) {
+            return allFetchedData[contentType].sheet[id].websiteLink;
+        }
+        return "";
+    };
+
     const getCardContainerId = (contentType) =>
         devData[contentType].dom.cardsContainerId;
 
@@ -98,6 +105,7 @@ const DataFunctions = (function DataFunctions() {
 
     return {
         getMatchingURL,
+        getMatchingWebsiteLink,
         fromDataGetCardsCreationParameters,
         getThumbnailImg,
         getErrorImg,
