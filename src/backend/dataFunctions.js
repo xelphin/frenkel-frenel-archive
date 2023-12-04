@@ -15,6 +15,7 @@ import devData from "../devData.json";
 const DataFunctions = (function DataFunctions() {
     let allFetchedData;
 
+    // TODO: can refactor
     const getMatchingLink = (id, idToLinkObj, contentType) => {
         // Each article/painting/... is supposed to have an accompanying img/pdf (a link of it is found inside of 'idToLinkObj')
         if (idToLinkObj[id] === undefined) {
@@ -25,6 +26,7 @@ const DataFunctions = (function DataFunctions() {
         return idToLinkObj[id].link;
     };
 
+    // TODO: can refactor
     const getMatchingExt = (id, idToLinkObj, contentType) => {
         // Each article/painting/... is supposed to have an accompanying img/pdf (a link of it is found inside of 'idToLinkObj')
         if (idToLinkObj[id] === undefined) {

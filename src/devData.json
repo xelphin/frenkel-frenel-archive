@@ -94,35 +94,72 @@
                 "database-name": "title",
                 "dont-show-if-empty": true,
                 "is-external-link": false,
-                "is-link-to-other-database": false
+                "is-link-to-other-database": false,
+                "show-on-compact": true
             },
             "source": {
                 "label-text": "Source",
                 "database-name": "source",
                 "dont-show-if-empty": true,
                 "is-external-link": false,
-                "is-link-to-other-database": false
+                "is-link-to-other-database": false,
+                "show-on-compact": true
             },
             "author": {
                 "label-text": "Author",
                 "database-name": "author",
                 "dont-show-if-empty": true,
                 "is-external-link": false,
-                "is-link-to-other-database": false
+                "is-link-to-other-database": false,
+                "show-on-compact": true
             },
             "date": {
                 "label-text": "Date",
                 "database-name": "date",
                 "dont-show-if-empty": true,
                 "is-external-link": false,
-                "is-link-to-other-database": false
+                "is-link-to-other-database": false,
+                "show-on-compact": true
+            },
+            "pages": {
+                "label-text": "Pages Referenced",
+                "database-name": "pagesWhereReferenced",
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false,
+                "show-on-compact": true
             },
             "website": {
                 "label-text": "Web",
                 "database-name": "websiteLink",
                 "dont-show-if-empty": true,
                 "is-external-link": true,
-                "is-link-to-other-database": false
+                "is-link-to-other-database": false,
+                "show-on-compact": true
+            },
+            "language": {
+                "label-text": "Language",
+                "database-name": "language",
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false,
+                "show-on-compact": false
+            },
+            "tags": {
+                "label-text": "Tags",
+                "database-name": "tags",
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false,
+                "show-on-compact": false
+            },
+            "description": {
+                "label-text": "Description",
+                "database-name": "description",
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false,
+                "show-on-compact": false
             }
         }
     },
@@ -235,21 +272,40 @@
                 "database-name": "title",
                 "dont-show-if-empty": true,
                 "is-external-link": false,
-                "is-link-to-other-database": false
+                "is-link-to-other-database": false,
+                "show-on-compact": true
             },
             "year": {
                 "label-text": "Year",
                 "database-name": "yearStart",
                 "dont-show-if-empty": true,
                 "is-external-link": false,
-                "is-link-to-other-database": false
+                "is-link-to-other-database": false,
+                "show-on-compact": true
             },
             "source": {
                 "label-text": "Source",
                 "database-name": "source",
                 "dont-show-if-empty": true,
                 "is-external-link": false,
-                "is-link-to-other-database": false
+                "is-link-to-other-database": false,
+                "show-on-compact": true
+            },
+            "length": {
+                "label-text": "Length",
+                "database-name": "length",
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false,
+                "show-on-compact": false
+            },
+            "width": {
+                "label-text": "Width",
+                "database-name": "width",
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false,
+                "show-on-compact": false
             },
             "article": {
                 "label-text": "Article",
@@ -257,14 +313,48 @@
                 "dont-show-if-empty": true,
                 "is-external-link": false,
                 "is-link-to-other-database": true,
-                "database-link-name": "articles"
+                "database-link-name": "articles",
+                "show-on-compact": true
+            },
+            "pageFromArticle": {
+                "label-text": "Pages",
+                "database-name": "pageFromArticle",
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false,
+                "show-on-compact": false
             },
             "website": {
                 "label-text": "Web",
                 "database-name": "websiteLink",
                 "dont-show-if-empty": true,
                 "is-external-link": true,
-                "is-link-to-other-database": false
+                "is-link-to-other-database": false,
+                "show-on-compact": true
+            },
+            "style": {
+                "label-text": "Style",
+                "database-name": "style",
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false,
+                "show-on-compact": false
+            },
+            "medium": {
+                "label-text": "Medium",
+                "database-name": "medium",
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false,
+                "show-on-compact": false
+            },
+            "notes": {
+                "label-text": "Notes",
+                "database-name": "notes",
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false,
+                "show-on-compact": false
             }
         }
     }
