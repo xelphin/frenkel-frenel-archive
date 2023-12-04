@@ -45,6 +45,7 @@ Promise.all(fetchedAllData).then(() => {
     //
     Object.entries(allFetchedData).forEach(([content, data]) => {
         console.log("Creating cards for: ", content);
+        // CREATE CARDS
         Cards.createCards(data.cardsParams, DataFunctions);
     });
 });

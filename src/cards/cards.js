@@ -1,4 +1,5 @@
 import CardsDom from "./cardsDom";
+import CardsExpandedDom from "./cardsExpandedDom";
 import devData from "../devData.json";
 
 const Cards = (function Cards() {
@@ -12,11 +13,12 @@ const Cards = (function Cards() {
 
     const createCards = (cardsParam, dataFunctionsMod) => {
         CardsDom.init(dataFunctionsMod);
+        CardsExpandedDom.init(dataFunctionsMod);
         // Create card
         const keys = Object.keys(cardsParam);
         for (let i = 0; i < keys.length; i += 1) {
             const idOfItem = keys[i];
-            CardsDom.cardCreator(cardsParam[idOfItem]);
+            CardsDom.cardCreator(cardsParam[idOfItem], CardsExpandedDom.openExpandedCard);
         }
     };
 
