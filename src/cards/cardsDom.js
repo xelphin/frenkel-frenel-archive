@@ -33,8 +33,13 @@ const CardsDom = (function CardsDom() {
 
     const createDriveLink = (itemId, contentType) => {
         // <a href="https://www.example.com" target="_blank">Visit Example.com</a>
+        // Preferably website link, otherwise, link to pdf
         const a = document.createElement("a");
-        a.href = dataFunctionsMod.getMatchingURL(itemId, contentType);
+        let link = dataFunctionsMod.getMatchingWebsiteLink(itemId, contentType);
+        if (link == "") {
+            link = dataFunctionsMod.getMatchingURL(itemId, contentType);
+        }
+        a.href = link;
         a.target = "_blank";
         a.textContent = `Link To ${contentType}`;
         return a;
