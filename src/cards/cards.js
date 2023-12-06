@@ -18,7 +18,10 @@ const Cards = (function Cards() {
         const keys = Object.keys(cardsParam);
         for (let i = 0; i < keys.length; i += 1) {
             const idOfItem = keys[i];
-            CardsDom.cardCreator(cardsParam[idOfItem], CardsExpandedDom.openExpandedCard);
+            CardsDom.cardCreator(
+                cardsParam[idOfItem],
+                CardsExpandedDom.openExpandedCard,
+            );
         }
     };
 

@@ -1,7 +1,6 @@
 const CardsDom = (function CardsDom() {
     let dataFunctionsMod;
 
-
     const createImageNode = (imageId, ext) => {
         const imgContainer = document.createElement("div");
         imgContainer.classList.add("card-image-container");
@@ -34,7 +33,7 @@ const CardsDom = (function CardsDom() {
         const a = document.createElement("a");
         let link = dataFunctionsMod.getMatchingWebsiteLink(itemId, contentType);
         if (link === "") {
-            link = dataFunctionsMod.getMatchingURL(itemId, contentType);
+            link = dataFunctionsMod.getMatchingDriveLink(itemId, contentType);
         }
         a.href = link;
         a.target = "_blank";
@@ -42,13 +41,18 @@ const CardsDom = (function CardsDom() {
         return a;
     };
 
-    const addContentSpecificText = (textDiv, cardData, cardsText, showOnlyCompact = true) => {
+    const addContentSpecificText = (
+        textDiv,
+        cardData,
+        cardsText,
+        showOnlyCompact = true,
+    ) => {
         const keys = Object.keys(cardsText);
         for (let i = 0; i < keys.length; i += 1) {
             let elem = document.createElement("h3");
             const key = keys[i]; // "year"
             const showOnCompact = cardsText[key]["show-on-compact"]; // true | false
-            if (!showOnlyCompact  || showOnCompact) {
+            if (!showOnlyCompact || showOnCompact) {
                 const showLabelName = cardsText[key]["label-text"]; // "Year"
                 const databaseLabelName = cardsText[key]["database-name"]; // "yearStart"
                 const textValue = cardData[databaseLabelName]; // "1950"
@@ -70,13 +74,18 @@ const CardsDom = (function CardsDom() {
         }
     };
 
+    const createIdText = (cardData) => {
+        // TODO: can refactor (put it in cardsDom)
+        const idText = document.createElement("h3");
+        idText.textContent = `ID: ${cardData.id}`;
+        return idText;
+    };
+
     const createTextNode = (cardData, cardsText) => {
         const textDiv = document.createElement("div");
         textDiv.classList.add("card-text-container");
-        const idText = document.createElement("h3");
-        idText.textContent = `ID: ${cardData.id}`;
         addContentSpecificText(textDiv, cardData, cardsText);
-        textDiv.appendChild(idText);
+        textDiv.appendChild(createIdText(cardData));
         return textDiv;
     };
 
@@ -91,9 +100,7 @@ const CardsDom = (function CardsDom() {
         card.appendChild(
             createTextNode(cardParam.cardData, cardParam.cardsText),
         );
-        card.addEventListener("click", () =>
-            callbackClick(cardParam),
-        );
+        card.addEventListener("click", () => callbackClick(cardParam));
         container.appendChild(card);
         return card;
     };
@@ -115,6 +122,7 @@ const CardsDom = (function CardsDom() {
     };
 
     return {
+        createIdText,
         addContentSpecificText,
         hideCardsContainer,
         showCardsContainer,
