@@ -2,19 +2,20 @@
 /* --------------- GENERAL --------------- */
 /* --------------------------------------- */
 
-* {
-    box-sizing: border-box;
-}
+/* IMPORTS */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* VARIABLES */
 
 /* Colors */
 $color1-type1: rgb(26, 26, 25);
 $color1-type2: rgb(54, 54, 51);
-$color2-type1: rgb(245, 245, 245);
-$color2-type2: rgb(227, 227, 225);
-$color3-type1: rgb(45, 45, 130);
+$color2-type1: rgb(253, 253, 253);
+$color2-type2: rgb(218, 218, 217);
+$color3-type1: rgb(63, 63, 161);
 
 /* Font */
-$main-font: "Roboto", sans-serif;
+$main-font: 'Work Sans', sans-serif;
 
 /* Text-Size */
 $title-size: 3em;
@@ -23,6 +24,13 @@ $small-size: 1.3em;
 
 /* Padding */
 $body-padding: 10px;
+
+/* GENERAL STYLE */
+
+* {
+    box-sizing: border-box;
+    font-family: $main-font;
+}
 
 ::selection {
     /* text highlight costumization */
@@ -36,13 +44,15 @@ $body-padding: 10px;
 }
 
 body {
-    font-family: $main-font;
+    font-family: "Montserrat";
     background-color: $color2-type1;
     color: $color1-type1;
 }
 
 #title {
+    font-family: $main-font;
     font-size: $title-size;
+    font-weight: 600;
     margin: $body-padding;
 }
 

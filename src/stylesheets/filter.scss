@@ -1,7 +1,8 @@
 @import "./general.scss";
 
 #filter-container {
-    border-bottom: 2px $color3-type1 solid;
+    font-family: $main-font;
+    border-bottom: 1px $color1-type2 solid;
     padding: 0 $body-padding;
 
     .specific-filter-container {
@@ -15,12 +16,53 @@
             display: flex;
             flex-direction: column;
             width: 18vw;
+
+            input {
+                margin-top: 12px;
+                border: none;
+                border-bottom: 1px solid $color1-type2;
+            }
+            input:active {
+                border: none;
+                border-bottom: 1px solid $color1-type2;
+                transform: scale(1.04);
+            }
+            input:focus, input:focus{
+                outline: none;
+                border-bottom: 2px solid $color3-type1;
+                transform: scale(1.04);
+                color: $color3-type1;
+            }
+        }
+    }
+
+    #buttons-container {
+        padding-bottom: 20px;
+
+        button {
+            font-family: $main-font;
+            background-color: $color2-type1;
+            border: 1px solid $color3-type1;
+            padding: 5px 15px;
+            border-radius: 10%;
+            transition: 0.1s linear transform;
+        }
+        button:hover {
+            background-color: $color3-type1;
+            color: $color2-type1;
+            transform: scale(1.02);
+            box-shadow: 5px 5px 3px $color2-type2;
+            border-radius: 10%;
+        }
+        button:active {
+            transform: scale(0.98);
         }
     }
 }
 
 @media (max-width: 850px) {
     #filter-container {
+    font-family: $main-font;
         .specific-filter-container {
             grid-template-columns: 1fr;
             .filter-item {

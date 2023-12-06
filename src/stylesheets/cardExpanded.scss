@@ -1,0 +1,26 @@
+@import "./general.scss";
+
+#card-expanded {
+    max-width: 800px;
+    align-items: center;
+    #card-expanded-thumbnail-container {
+        height: 400px;
+        #card-expanded-thumbnail {
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+    #card-expanded-text-container {
+        padding: 20px 0;
+    }
+    #card-expanded-close-container {
+        #card-expanded-close {
+            font-weight: 800;
+            font-size: $small-size;
+        }
+        #card-expanded-close:hover {
+            color: $color3-type1;
+        }
+
+    }
+}
