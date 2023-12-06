@@ -1,5 +1,5 @@
 // SCSS
-import "./stylesheets/style.scss";
+import "./style.scss";
 // JS
 import Menu from "./menu/menu";
 import FetchData from "./backend/fetchData";
