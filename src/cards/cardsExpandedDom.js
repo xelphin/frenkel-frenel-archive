@@ -31,6 +31,23 @@ const CardsExpandedDom = (function CardsExpandedDom() {
         textDiv.appendChild(idText);
     }
 
+    const addDriveLink = (cardParam, textDiv) => {
+        let link;
+        if (!("websiteLink" in cardParam.cardData) || cardParam.cardData.websiteLink === "") {
+            // Drive Link
+            link = dataFunctionsMod.getMatchingDriveLink(cardParam.cardData.id, cardParam.contentType)
+            console.log("Appending drive link");
+        } else {
+            console.log("No drive link and no website link.");
+            return;
+        }
+        const linkDom = document.createElement("a");
+        linkDom.href = link;
+        linkDom.target = "_blank";
+        linkDom.textContent = "Document";
+        textDiv.appendChild(linkDom);
+    }
+
     const fillCardWithParams = (cardParam) => {
         textDiv.textContent = "";
         addThumbnail(cardParam);
@@ -38,6 +55,7 @@ const CardsExpandedDom = (function CardsExpandedDom() {
         const {cardData} = cardParam;
         const {cardsText} = cardParam;
         CardsDom.addContentSpecificText(textDiv, cardData, cardsText, false);
+        addDriveLink(cardParam, textDiv);
     }
 
     // ------------------------------

@@ -37,7 +37,7 @@ const DataFunctions = (function DataFunctions() {
         return idToLinkObj[id].extension;
     };
 
-    const getMatchingURL = (id, contentType) => {
+    const getMatchingDriveLink = (id, contentType) => {
         const idToLinkObj = allFetchedData[contentType].idToLink;
         if (idToLinkObj[id] === undefined) {
             console.log(`NOTE: In ${contentType}, missing image for ${id}`);
@@ -106,7 +106,7 @@ const DataFunctions = (function DataFunctions() {
     };
 
     return {
-        getMatchingURL,
+        getMatchingDriveLink,
         getMatchingWebsiteLink,
         fromDataGetCardsCreationParameters,
         getThumbnailImg,

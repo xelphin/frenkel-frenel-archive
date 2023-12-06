@@ -34,7 +34,7 @@ const CardsDom = (function CardsDom() {
         const a = document.createElement("a");
         let link = dataFunctionsMod.getMatchingWebsiteLink(itemId, contentType);
         if (link === "") {
-            link = dataFunctionsMod.getMatchingURL(itemId, contentType);
+            link = dataFunctionsMod.getMatchingDriveLink(itemId, contentType);
         }
         a.href = link;
         a.target = "_blank";
