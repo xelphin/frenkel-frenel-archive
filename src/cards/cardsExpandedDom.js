@@ -1,41 +1,43 @@
 import CardsDom from "./cardsDom";
 
 const CardsExpandedDom = (function CardsExpandedDom() {
-
     const card = document.querySelector("#card-expanded");
     const closeBtn = document.querySelector("#card-expanded-close");
     const thumbnail = document.querySelector("#card-expanded-thumbnail");
     const textDiv = document.querySelector("#card-expanded-text-container");
     let dataFunctionsMod;
 
-    const closeExpandedCard = () =>  {
+    const closeExpandedCard = () => {
         card.close();
-    }
+    };
 
     const addThumbnail = (cardParam) => {
         const paramThumbnail = cardParam.imageLink;
         const paramExtension = cardParam.extension;
         if (
             paramThumbnail !== "" &&
-            (paramExtension === "jpg" || paramExtension === "jpeg" || paramExtension === "png" || paramExtension === "pdf")
+            (paramExtension === "jpg" ||
+                paramExtension === "jpeg" ||
+                paramExtension === "png" ||
+                paramExtension === "pdf")
         ) {
             thumbnail.src = dataFunctionsMod.getThumbnailImg(paramThumbnail);
         } else {
             thumbnail.src = dataFunctionsMod.getErrorImg();
         }
-    }
+    };
 
-    const addId = (cardParam) => { // TODO: can refactor (put it in cardsDom)
-        const idText = document.createElement("h3");
-        idText.textContent = `ID: ${cardParam.cardData.id}`;
-        textDiv.appendChild(idText);
-    }
-
-    const addDriveLink = (cardParam, textDiv) => {
+    const addDriveLink = (cardParam, parentDiv) => {
         let link;
-        if (!("websiteLink" in cardParam.cardData) || cardParam.cardData.websiteLink === "") {
+        if (
+            !("websiteLink" in cardParam.cardData) ||
+            cardParam.cardData.websiteLink === ""
+        ) {
             // Drive Link
-            link = dataFunctionsMod.getMatchingDriveLink(cardParam.cardData.id, cardParam.contentType)
+            link = dataFunctionsMod.getMatchingDriveLink(
+                cardParam.cardData.id,
+                cardParam.contentType,
+            );
             console.log("Appending drive link");
         } else {
             console.log("No drive link and no website link.");
@@ -45,18 +47,18 @@ const CardsExpandedDom = (function CardsExpandedDom() {
         linkDom.href = link;
         linkDom.target = "_blank";
         linkDom.textContent = "Document";
-        textDiv.appendChild(linkDom);
-    }
+        parentDiv.appendChild(linkDom);
+    };
 
     const fillCardWithParams = (cardParam) => {
         textDiv.textContent = "";
         addThumbnail(cardParam);
-        addId(cardParam);
-        const {cardData} = cardParam;
-        const {cardsText} = cardParam;
+        const { cardData } = cardParam;
+        const { cardsText } = cardParam;
+        textDiv.appendChild(CardsDom.createIdText(cardData));
         CardsDom.addContentSpecificText(textDiv, cardData, cardsText, false);
         addDriveLink(cardParam, textDiv);
-    }
+    };
 
     // ------------------------------
     //      EXPORTED FUNCTIONS
@@ -69,15 +71,13 @@ const CardsExpandedDom = (function CardsExpandedDom() {
     };
 
     const init = (dataFunctions) => {
-        closeBtn.addEventListener("click", () =>
-            closeExpandedCard(),
-        );
+        closeBtn.addEventListener("click", () => closeExpandedCard());
         dataFunctionsMod = dataFunctions;
-    }
+    };
 
     return {
         openExpandedCard,
-        init
+        init,
     };
 })();
 

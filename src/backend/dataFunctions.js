@@ -15,38 +15,49 @@ import devData from "../devData.json";
 const DataFunctions = (function DataFunctions() {
     let allFetchedData;
 
-    // TODO: can refactor
-    const getMatchingLink = (id, idToLinkObj, contentType) => {
+    const getIdToLinkObjForIdThroughObject = (id, idToLinkObj, contentType) => {
         // Each article/painting/... is supposed to have an accompanying img/pdf (a link of it is found inside of 'idToLinkObj')
         if (idToLinkObj[id] === undefined) {
             console.log(`NOTE: In ${contentType}, missing image for ${id}`);
-            return "";
+            return undefined;
         }
-        // Found link
-        return idToLinkObj[id].link;
+        return idToLinkObj[id];
     };
 
-    // TODO: can refactor
+    const getIdToLinkObjForId = (id, contentType) => {
+        const idToLinkObj = allFetchedData[contentType].idToLink;
+        return getIdToLinkObjForIdThroughObject(id, idToLinkObj, contentType);
+    };
+
+    const getMatchingLinkId = (id, idToLinkObj, contentType) => {
+        const idToLinkObjAtId = getIdToLinkObjForIdThroughObject(
+            id,
+            idToLinkObj,
+            contentType,
+        );
+        if (idToLinkObjAtId === undefined) return "";
+        // Found link
+        return idToLinkObjAtId.link;
+    };
+
     const getMatchingExt = (id, idToLinkObj, contentType) => {
-        // Each article/painting/... is supposed to have an accompanying img/pdf (a link of it is found inside of 'idToLinkObj')
-        if (idToLinkObj[id] === undefined) {
-            console.log(`NOTE: In ${contentType}, missing image for ${id}`);
-            return "";
-        }
-        // Found extension
-        return idToLinkObj[id].extension;
+        const idToLinkObjAtId = getIdToLinkObjForIdThroughObject(
+            id,
+            idToLinkObj,
+            contentType,
+        );
+        if (idToLinkObjAtId === undefined) return "";
+        // Found link
+        return idToLinkObjAtId.extension;
     };
 
     const getMatchingDriveLink = (id, contentType) => {
-        const idToLinkObj = allFetchedData[contentType].idToLink;
-        if (idToLinkObj[id] === undefined) {
-            console.log(`NOTE: In ${contentType}, missing image for ${id}`);
-            return "";
-        }
+        const idToLinkObjAtId = getIdToLinkObjForId(id, contentType);
+        if (idToLinkObjAtId === "") return "";
         // Found link
         const prefix = "https://drive.google.com/file/d/";
         const postfix = "/view?usp=drive_link";
-        return prefix + idToLinkObj[id].link + postfix;
+        return prefix + idToLinkObjAtId.link + postfix;
     };
 
     const getMatchingWebsiteLink = (id, contentType) => {
@@ -71,7 +82,7 @@ const DataFunctions = (function DataFunctions() {
         const keys = Object.keys(data);
         for (let i = 0; i < keys.length; i += 1) {
             const idOfItem = keys[i];
-            const matchingLink = getMatchingLink(
+            const matchingLink = getMatchingLinkId(
                 idOfItem,
                 idToLinkObj,
                 contentType,
