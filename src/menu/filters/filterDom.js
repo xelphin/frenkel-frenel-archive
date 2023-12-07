@@ -1,20 +1,26 @@
 const FilterDom = (function FilterDom() {
     const allFiltersContainer = document.querySelector("#filter-container");
 
+    const makeInputId = (contentType, inputId) => {
+        return `${contentType}-item-input-${inputId}`;
+    }
+
     // HELPER
-    const createLabel = (labelText) => {
+    const createLabel = (labelText, contentType, inputId) => {
         const label = document.createElement("label");
         label.textContent = `${labelText}:`;
         label.class = "filter-item-label";
+        label.setAttribute("for", makeInputId(contentType, inputId));
         return label;
     };
 
     const createInput = (inputId, labelText, type, contentType) => {
         const input = document.createElement("input");
-        input.id = `${contentType}-item-input-${inputId}`;
+        input.id = makeInputId(contentType, inputId);
         input.type = type;
         input.classList.add("filter-item-input");
         input.setAttribute("data-item", inputId);
+        input.setAttribute("data-from", contentType);
         input.placeholder = labelText;
         return input;
     };
@@ -22,7 +28,7 @@ const FilterDom = (function FilterDom() {
     const createFilterItem = (infoObj, key, contentType) => {
         const filterItem = document.createElement("div");
         filterItem.setAttribute("class", "filter-item");
-        filterItem.appendChild(createLabel(infoObj["label-text"]));
+        filterItem.appendChild(createLabel(infoObj["label-text"], contentType, key));
         filterItem.appendChild(
             createInput(key, infoObj["label-text"], infoObj.type, contentType),
         );

@@ -14,28 +14,28 @@
                 "label-text": "Title",
                 "database-name": "title",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "source": {
                 "label-text": "Source",
                 "database-name": "source",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "author": {
                 "label-text": "Author",
                 "database-name": "author",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "description": {
                 "label-text": "Description",
                 "database-name": "description",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "language": {
@@ -63,7 +63,7 @@
                 "label-text": "Tags",
                 "database-name": "tags",
                 "type": "text",
-                "application": "simmilar-tags",
+                "application": "similar-tags",
                 "data-language": "english"
             },
             "min-pages": {
@@ -178,7 +178,7 @@
                 "label-text": "Title",
                 "database-name": "title",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "min-year": {
@@ -227,42 +227,42 @@
                 "label-text": "Source",
                 "database-name": "source",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "medium": {
                 "label-text": "Medium",
                 "database-name": "medium",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "style": {
                 "label-text": "Style",
                 "database-name": "style",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "type": {
                 "label-text": "Type",
                 "database-name": "type",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "theme": {
                 "label-text": "Theme",
                 "database-name": "theme",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "people": {
                 "label-text": "People",
                 "database-name": "people",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             }
         },
@@ -335,6 +335,14 @@
             "style": {
                 "label-text": "Style",
                 "database-name": "style",
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false,
+                "show-on-compact": false
+            },
+            "type": {
+                "label-text": "Type",
+                "database-name": "type",
                 "dont-show-if-empty": true,
                 "is-external-link": false,
                 "is-link-to-other-database": false,
