@@ -27,7 +27,8 @@
                 border-bottom: 1px solid $color1-type2;
                 transform: scale(1.04);
             }
-            input:focus, input:focus{
+            input:focus,
+            input:focus {
                 outline: none;
                 border-bottom: 2px solid $color3-type1;
                 transform: scale(1.04);
@@ -62,7 +63,7 @@
 
 @media (max-width: 850px) {
     #filter-container {
-    font-family: $main-font;
+        font-family: $main-font;
         .specific-filter-container {
             grid-template-columns: 1fr;
             .filter-item {

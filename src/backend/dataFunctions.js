@@ -112,6 +112,9 @@ const DataFunctions = (function DataFunctions() {
     const getThumbnailImg = (imageLink) => prefixThumbnail + imageLink;
     const getErrorImg = () => errorImg;
 
+    const getLabelInfo = (content, labelName) =>
+        devData[content].filterLabels[labelName];
+
     const init = (allFetchedDataObj) => {
         allFetchedData = allFetchedDataObj;
     };
@@ -122,6 +125,7 @@ const DataFunctions = (function DataFunctions() {
         fromDataGetCardsCreationParameters,
         getThumbnailImg,
         getErrorImg,
+        getLabelInfo,
         init,
     };
 })();

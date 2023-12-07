@@ -13,7 +13,8 @@ const FilterDom = (function FilterDom() {
         const input = document.createElement("input");
         input.id = `${contentType}-item-input-${inputId}`;
         input.type = type;
-        input.class = "filter-item-input";
+        input.classList.add("filter-item-input");
+        input.setAttribute("data-item", inputId);
         input.placeholder = labelText;
         return input;
     };
