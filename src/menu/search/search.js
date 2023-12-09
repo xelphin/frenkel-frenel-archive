@@ -33,27 +33,36 @@ const Search = (function Search() {
         }
     }
 
-    const searchExact = () => {
+    const searchExact = (filteredData, info, filterBy, result) => {
+        if (result !== undefined && result !== "") {
+            if (info.application === "exact" || info.application === "similar") {
+                filteredData = ExactSearch.filterTextExact(filteredData, result, filterBy)
+            } else if (info.application === "range-min") {
+                filteredData = ExactSearch.filterRangeExact(filteredData, true, result, info.type, info["database-name"], info.template);
+            }
+            // TODO
+        }
+        return filteredData;
+    };
+
+    const search = (typeSearch) => {
         getResults();
-        // TODO: Instead of using filteredInputs, make an array version of it
+        const searchInputsArr = Object.values(searchInputs);
+        let filteredData = Object.values(DataFunctions.getAllItems(onContent));
         console.log("Search Inputs: ", searchInputs);
-        const keys = Object.keys(searchInputs);
-        let filteredInputs = searchInputs;
-        for (let i = 0; i < keys.length; i += 1) {
-            const nameOfItem = keys[i];
-            const info = searchInputs[nameOfItem].infoOnInput;
-            const filterBy = searchInputs[nameOfItem].name;
-            const toMatch = searchInputs[nameOfItem].result;
-            if (toMatch !== undefined && toMatch !== "") {
-                if (info.application == "exact" || info.application == "similar") {
-                    // filteredInputs = ExactSearch.filterTextExact(filteredInputs, toMatch, filterBy)
-                } else if (info.application == "range-min" || info.application == "range-max") {
-                    // TODO
-                }
+        console.log("Still unfiltered data: ", filteredData);
+        for (let i = 0; i < searchInputsArr.length; i += 1) {
+            const info = searchInputsArr[i].infoOnInput;
+            const filterBy = searchInputsArr[i].name;
+            const result = searchInputsArr[i].result;
+            if (typeSearch === "exact") {
+                filteredData = searchExact(filteredData, info, filterBy, result);
+            } else {
+
             }
         }
-        console.log("Final Search Results: ", filteredInputs);
-    };
+        console.log("Final filtered data: ", filteredData);
+    }
 
     const updateOnContent = (nowShowing) => {
         onContent = nowShowing;
@@ -62,10 +71,11 @@ const Search = (function Search() {
 
     const init = (firstShow) => {
         onContent = firstShow;
-        SearchDom.init(searchExact, searchExact); // TODO: Make the second one searchNLP
+        SearchDom.init(search); // TODO: Make the second one searchNLP
     };
 
     return {
+        search,
         searchExact,
         updateOnContent,
         init,

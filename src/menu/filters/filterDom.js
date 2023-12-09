@@ -14,14 +14,14 @@ const FilterDom = (function FilterDom() {
         return label;
     };
 
-    const createInput = (inputId, labelText, type, contentType) => {
+    const createInput = (inputId, labelText, type, placeholder, contentType) => {
         const input = document.createElement("input");
         input.id = makeInputId(contentType, inputId);
         input.type = type;
         input.classList.add("filter-item-input");
         input.setAttribute("data-item", inputId);
         input.setAttribute("data-from", contentType);
-        input.placeholder = labelText;
+        input.placeholder = placeholder;
         return input;
     };
 
@@ -29,8 +29,10 @@ const FilterDom = (function FilterDom() {
         const filterItem = document.createElement("div");
         filterItem.setAttribute("class", "filter-item");
         filterItem.appendChild(createLabel(infoObj["label-text"], contentType, key));
+        let placeholder = infoObj["label-text"];
+        if (infoObj.hasOwnProperty('placeholder')) placeholder = infoObj.placeholder;
         filterItem.appendChild(
-            createInput(key, infoObj["label-text"], infoObj.type, contentType),
+            createInput(key, infoObj["label-text"], infoObj.type, placeholder, contentType),
         );
 
         return filterItem;

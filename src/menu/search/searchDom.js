@@ -8,13 +8,12 @@ const SearchDom = (function SearchDom() {
         let myArr = [];
         for (let i = 0; i < allInputs.length; i += 2) {
             if (allInputs[i].getAttribute("data-from") === contentType) {
-                let result = allInputs[i].value.replace(/\|/g, '').replace(/\~/g, '');
+                let result = allInputs[i].value;
                 let name = allInputs[i].getAttribute("data-item");
                 myArr[i] = name;
                 myArr[i+1] = result;
             }
         }
-        console.log("printing myArr: ", myArr);
         return myArr;
     }
 
@@ -34,12 +33,15 @@ const SearchDom = (function SearchDom() {
         return allInputsObjToFill;
     };
 
-    const init = (callbackForExactSearch, callbackForNLPSearch) => {
+    const init = (callbackForSearch) => {
         // Search Buttons
         searchExactBtn.addEventListener("click", () =>
-           callbackForExactSearch(),
+        callbackForSearch("exact"),
         );
-        searchBtn.addEventListener("click", () => callbackForNLPSearch());
+        searchBtn.addEventListener("click", () => callbackForSearch("nlp"));
+        // Show them
+        searchExactBtn.style.display = "inline-block";
+        searchBtn.style.display = "inline-block";
     };
 
     return {

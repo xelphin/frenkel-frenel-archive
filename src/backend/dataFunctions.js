@@ -115,6 +115,11 @@ const DataFunctions = (function DataFunctions() {
     const getLabelInfo = (content, labelName) =>
         devData[content].filterLabels[labelName];
 
+    const getAllItems = (contentType) => {
+        console.log("Sending all items: ", allFetchedData[contentType].sheet);
+        return allFetchedData[contentType].sheet;
+    }
+
     const init = (allFetchedDataObj) => {
         allFetchedData = allFetchedDataObj;
     };
@@ -126,6 +131,7 @@ const DataFunctions = (function DataFunctions() {
         getThumbnailImg,
         getErrorImg,
         getLabelInfo,
+        getAllItems,
         init,
     };
 })();

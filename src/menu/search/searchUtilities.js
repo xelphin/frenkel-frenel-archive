@@ -28,7 +28,10 @@ const SearchUtilities = (function SearchUtilities() {
     };
 
     const cleanText = (text) => {
-        return text.replace(/\s/g, "").toLowerCase();
+        let newText = text.toLowerCase();
+        newText = newText.trim();
+        newText = newText.replace(/\s+/g, ' ');
+        return newText;
     };
 
     return {
