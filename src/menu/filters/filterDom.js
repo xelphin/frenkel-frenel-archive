@@ -86,6 +86,9 @@ const FilterDom = (function FilterDom() {
                 const inputObj = {}
                 inputObj.labelKey = allInputs[i].getAttribute("data-item");
                 inputObj.result = allInputs[i].value;
+                if (allInputs[i].type === "checkbox") {
+                    inputObj.result = allInputs[i].checked;
+                }
                 inputsArr[i] = inputObj;
             }
         }

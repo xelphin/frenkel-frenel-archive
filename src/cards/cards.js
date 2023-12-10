@@ -39,7 +39,6 @@ const Cards = (function Cards() {
     };
 
     const showOnlyCards = (contentType, itemsIdToShow) => {
-        console.log(`In ${contentType}, show only:`, itemsIdToShow);
         const containerId = devData[contentType].dom.cardsContainerId;
         CardsDom.showOnlyCards(containerId, itemsIdToShow);
 

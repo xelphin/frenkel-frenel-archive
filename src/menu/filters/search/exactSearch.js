@@ -1,13 +1,22 @@
 import SearchUtilities from "./searchUtilities";
 
 const ExactSearch = (function ExactSearch() {
+
+    function isSubset(subset, array) {
+        // [copied]
+        return subset.every(element => array.includes(element));
+    }
+    
     const filterExactMatch = (allItems, databaseName, userInput) => {
         console.log(`Filtering: ${databaseName}, to match exact "${userInput}"`);
-        const matchWith = SearchUtilities.cleanText(userInput);
+        // Get user ',' split input
+        let matchWith = userInput.split(",");
+        matchWith = matchWith.map((str) => SearchUtilities.cleanText(str));
+        // Filter
         const allMatches = allItems.filter((item) => {
             let itemValues = item[databaseName].split(",");
             itemValues = itemValues.map((str) => SearchUtilities.cleanText(str));
-            if (itemValues.includes(matchWith) || itemValues[0] === matchWith) {
+            if (isSubset(matchWith, itemValues)) {
                 return true;
             }
             return false;
@@ -24,7 +33,6 @@ const ExactSearch = (function ExactSearch() {
         } else if (type === "number") {
             edgeValue = parseInt(userInput);
         }
-        console.log("All items: ", allItems);
         try {
             const allMatches = allItems.filter((item) => {
                 let itemValue = item[databaseName];
@@ -54,11 +62,10 @@ const ExactSearch = (function ExactSearch() {
     }
 
     const filterHas = (allItems, databaseName, userInput) => {
-        if (userInput !== "on") return allItems;
+        if (!userInput) return allItems;
         // We want to filter
         const allMatches = allItems.filter((item) => {
             let itemValue = item[databaseName];
-            console.log("Checking itemValue: ", itemValue);
             if (itemValue !== "") {
                 return true;
             }
@@ -68,7 +75,6 @@ const ExactSearch = (function ExactSearch() {
     }
 
     const search = (allItems, filterName, filterInfo, userInput ) => {
-        console.log("Received filter info: ", filterInfo);
         const databaseName = filterInfo["database-name"];
         if (filterInfo.application === "exact" || filterInfo.application === "similar") {
             return filterExactMatch(allItems, databaseName, userInput);

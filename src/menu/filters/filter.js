@@ -12,7 +12,7 @@ const Filter = (function Filter() {
 
     // SEARCH FUNCTIONS
     const search = (searchData) => {
-        console.log(searchData);
+        console.log("Filters: ",searchData);
         let items = Object.values(DataFunctions.getAllItems(currContent));
         // TODO: Continue here
         const filters = searchData.inputs;
