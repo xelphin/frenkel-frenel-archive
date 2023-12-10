@@ -6,6 +6,7 @@ import DataFunctions from "../../backend/dataFunctions";
 const Filter = (function Filter() {
     const filterContainerIdPostFix = "-filter-container";
     let currContent = "articles";
+    let showOnlyCardsCallback;
 
     const getFilterContainer = (name) => name + filterContainerIdPostFix;
 
@@ -22,12 +23,14 @@ const Filter = (function Filter() {
             if (userInput !== "" && filterInfo !== undefined) {
                 if (searchData.typeSearch === "exact") {
                     items = ExactSearch.search(items, filterName, filterInfo, userInput);
+                    const itemsIdArray = items.map(obj => obj.id);
+                    showOnlyCardsCallback(currContent, itemsIdArray);
                 } else if (searchData.typeSearch === "nlp") {
                     
                 }
             }
         });
-        console.log("Items after filtering: ", items);
+        
     }
 
     // FILTER CREATION FUNCTIONS
@@ -47,13 +50,14 @@ const Filter = (function Filter() {
     };
 
     // INIT
-    const init = (firstShow = "articles") => {
+    const init = (showOnlyCardsCallbackSent, firstShow = "articles") => {
         Object.keys(devData).forEach((content) => {
             createFilterItems(content);
         });
         // Show only filter items from one content type
         FilterDom.hideAllFilterItems();
         switchToContent(firstShow);
+        showOnlyCardsCallback = showOnlyCardsCallbackSent;
     };
 
     return {
