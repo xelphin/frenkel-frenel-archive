@@ -1,11 +1,12 @@
 import SearchUtilities from "./searchUtilities";
 
 const ExactSearch = (function ExactSearch() {
-    const filterExactMatch = (allItems, filterName, userInput) => {
-        console.log(`Filtering: ${filterName}, to match exact "${userInput}"`);
+    const filterExactMatch = (allItems, databaseName, userInput) => {
+        console.log(`Filtering: ${databaseName}, to match exact "${userInput}"`);
         const matchWith = SearchUtilities.cleanText(userInput);
         const allMatches = allItems.filter((item) => {
-            const itemValue = SearchUtilities.cleanText(item[filterName]);
+            const itemValue = SearchUtilities.cleanText(item[databaseName]);
+            // TODO: make that given "english" and article has "english, hebrew" to still return true
             if (itemValue === matchWith) {
                 return true;
             }
@@ -14,38 +15,55 @@ const ExactSearch = (function ExactSearch() {
         return allMatches;
     };
 
-    const checkTemplate = (template, str) => {
-        if (template.length !== str.length) return false;
-        for (let i = 0; i < template.length; i++) {
-            // Check is digit when 'x'
-            if (template[i] === 'x' && isNaN(parseInt(str[i], 10))) return false;
-            // Otherwise check same char
-            if (template[i] !== str[i]) return false;
-        }
-        return true;
-    }
-
-    const filterRangeExact = (allItems, wantAbove, edgeValue, type, filterBy, template) => {
-        console.log(`Filtering: ${filterBy}, by wanting above? ${wantAbove} the value ${edgeValue}, the type of the value is ${type}`);
-        // Check Template
-        if (template !== undefined) {
-            if (!checkTemplate(template, edgeValue)) {
-                window.prompt(`Your filter value ${filterBy}, is not in the correct template`);
-                return allMatches;
-            }
-        }
+    const filterRangeExact = (allItems, wantAbove, userInput,  type, databaseName) => {
+        console.log(`Filtering: ${databaseName}, by wanting above? ${wantAbove} the value ${userInput}, the type of the value is ${type}`);
         // Filter
-        const allMatches = allItems.filter((item) => {
-            const itemValue = item[filterBy];
-            return true;
-        });
-        return allMatches;
+        let edgeValue = userInput;
+        if (type === "date") {
+            edgeValue = new Date(userInput);
+        } else if (type === "number") {
+            edgeValue = parseInt(userInput);
+        }
+        console.log("All items: ", allItems);
+        try {
+            const allMatches = allItems.filter((item) => {
+                let itemValue = item[databaseName];
+                if (type === "date") {
+                    itemValue = SearchUtilities.getFromTextTheDate(itemValue);
+                } else if (type === "number") {
+                    itemValue = parseInt(itemValue);
+                }
+                if (itemValue === undefined || edgeValue === undefined) {
+                    return false;
+                }
+                // Check
+                
+                if (edgeValue <= itemValue) {
+                    if (wantAbove) return true;
+                    return false;
+                } else {
+                    if (!wantAbove) return true;
+                    return false;
+                }
+            });
+            return allMatches;
+        } catch (error) {
+            console.error("ERROR: ", error);
+            return allItems;
+        }
     }
 
     const search = (allItems, filterName, filterInfo, userInput ) => {
         console.log("Received filter info: ", filterInfo);
+        const databaseName = filterInfo["database-name"];
         if (filterInfo.application === "exact" || filterInfo.application === "similar") {
-            return filterExactMatch(allItems, filterName, userInput);
+            return filterExactMatch(allItems, databaseName, userInput);
+        }
+        if (filterInfo.application === "range-min") {
+            return filterRangeExact(allItems, true, userInput, filterInfo.type, databaseName);
+        }
+        if (filterInfo.application === "range-max") {
+            return filterRangeExact(allItems, false, userInput, filterInfo.type, databaseName);
         }
         return allItems;
     }

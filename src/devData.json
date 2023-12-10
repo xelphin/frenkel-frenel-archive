@@ -52,8 +52,7 @@
                 "type-range": "date",
                 "application": "range-min",
                 "data-language": "",
-                "placeholder": "dd/mm/yyyy",
-                "template": "xx/xx/xxxx"
+                "placeholder": "dd/mm/yyyy"
             },
             "max-date": {
                 "label-text": "To",
@@ -62,8 +61,7 @@
                 "type-range": "date",
                 "application": "range-max",
                 "data-language": "",
-                "placeholder": "dd/mm/yyyy",
-                "template": "xx/xx/xxxx"
+                "placeholder": "dd/mm/yyyy"
             },
             "tags": {
                 "label-text": "Tags",
@@ -196,8 +194,7 @@
                 "type-range": "date",
                 "application": "range-min",
                 "data-language": "",
-                "placeholder": "yyyy",
-                "template": "xxxx"
+                "placeholder": "yyyy"
             },
             "max-year": {
                 "label-text": "Till",
@@ -206,8 +203,7 @@
                 "type-range": "date",
                 "application": "range-max",
                 "data-language": "",
-                "placeholder": "yyyy",
-                "template": "xxxx"
+                "placeholder": "yyyy"
             },
             "min-length": {
                 "label-text": "Min Length",
