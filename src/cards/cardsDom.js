@@ -1,5 +1,6 @@
 const CardsDom = (function CardsDom() {
     let dataFunctionsMod;
+    const loader = document.querySelector("#card-loader-container");
 
     const createImageNode = (imageId, ext) => {
         const imgContainer = document.createElement("div");
@@ -116,7 +117,7 @@ const CardsDom = (function CardsDom() {
     };
 
     const showCards = (container) => {
-        const children = container.children;
+        const {children} = container;
         for (const child of children) {
             showCard(child);
         }
@@ -131,7 +132,7 @@ const CardsDom = (function CardsDom() {
 
     const showOnlyCards = (containerId, itemsIdToShow) => {
         const container = document.querySelector(`#${containerId}`);
-        const children = container.children;
+        const {children} = container;
         for (const child of children) {
             if (itemsIdToShow.includes(child.id)) {
                 showCard(child);
@@ -140,6 +141,10 @@ const CardsDom = (function CardsDom() {
             }
             
         }
+    }
+
+    const hideLoader = () => {
+        loader.style.display = "none";
     }
 
     const init = (dataFunctions) => {
@@ -153,6 +158,7 @@ const CardsDom = (function CardsDom() {
         showCardsContainer,
         cardCreator,
         showOnlyCards,
+        hideLoader,
         init,
     };
 })();

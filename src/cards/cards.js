@@ -44,10 +44,15 @@ const Cards = (function Cards() {
 
     }
 
+    const hideLoader = () => {
+        CardsDom.hideLoader();
+    }
+
     return {
         createCards,
         showCardsFor,
-        showOnlyCards
+        showOnlyCards,
+        hideLoader
     };
 })();
 
