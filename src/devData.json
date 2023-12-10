@@ -14,28 +14,28 @@
                 "label-text": "Title",
                 "database-name": "title",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "source": {
                 "label-text": "Source",
                 "database-name": "source",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "author": {
                 "label-text": "Author",
                 "database-name": "author",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "description": {
                 "label-text": "Description",
                 "database-name": "description",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "language": {
@@ -49,27 +49,32 @@
                 "label-text": "From",
                 "database-name": "date",
                 "type": "date",
+                "type-range": "date",
                 "application": "range-min",
-                "data-language": ""
+                "data-language": "",
+                "placeholder": "dd/mm/yyyy"
             },
             "max-date": {
                 "label-text": "To",
                 "database-name": "date",
                 "type": "date",
+                "type-range": "date",
                 "application": "range-max",
-                "data-language": ""
+                "data-language": "",
+                "placeholder": "dd/mm/yyyy"
             },
             "tags": {
                 "label-text": "Tags",
                 "database-name": "tags",
                 "type": "text",
-                "application": "simmilar-tags",
+                "application": "similar-tags",
                 "data-language": "english"
             },
             "min-pages": {
                 "label-text": "Min Pages",
                 "database-name": "pagesTotal",
                 "type": "number",
+                "type-range": "number",
                 "application": "range-min",
                 "data-language": ""
             },
@@ -77,6 +82,7 @@
                 "label-text": "Max Pages",
                 "database-name": "pagesTotal",
                 "type": "number",
+                "type-range": "number",
                 "application": "range-max",
                 "data-language": ""
             },
@@ -84,7 +90,7 @@
                 "label-text": "From Website",
                 "database-name": "websiteLink",
                 "type": "checkbox",
-                "application": "has-input",
+                "application": "has",
                 "data-language": ""
             }
         },
@@ -178,27 +184,32 @@
                 "label-text": "Title",
                 "database-name": "title",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "min-year": {
                 "label-text": "From",
                 "database-name": "yearStart",
                 "type": "number",
+                "type-range": "date",
                 "application": "range-min",
-                "data-language": ""
+                "data-language": "",
+                "placeholder": "yyyy"
             },
             "max-year": {
                 "label-text": "Till",
                 "database-name": "yearStart",
                 "type": "number",
+                "type-range": "date",
                 "application": "range-max",
-                "data-language": ""
+                "data-language": "",
+                "placeholder": "yyyy"
             },
             "min-length": {
                 "label-text": "Min Length",
                 "database-name": "length",
                 "type": "number",
+                "type-range": "number",
                 "application": "range-min",
                 "data-language": ""
             },
@@ -206,6 +217,7 @@
                 "label-text": "Max Length",
                 "database-name": "length",
                 "type": "number",
+                "type-range": "number",
                 "application": "range-max",
                 "data-language": ""
             },
@@ -213,6 +225,7 @@
                 "label-text": "Min Width",
                 "database-name": "width",
                 "type": "number",
+                "type-range": "number",
                 "application": "range-min",
                 "data-language": ""
             },
@@ -220,6 +233,7 @@
                 "label-text": "Max Width",
                 "database-name": "width",
                 "type": "number",
+                "type-range": "number",
                 "application": "range-max",
                 "data-language": ""
             },
@@ -227,42 +241,42 @@
                 "label-text": "Source",
                 "database-name": "source",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "medium": {
                 "label-text": "Medium",
                 "database-name": "medium",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "style": {
                 "label-text": "Style",
                 "database-name": "style",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "type": {
                 "label-text": "Type",
                 "database-name": "type",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "theme": {
                 "label-text": "Theme",
                 "database-name": "theme",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             },
             "people": {
                 "label-text": "People",
                 "database-name": "people",
                 "type": "text",
-                "application": "simmilar",
+                "application": "similar",
                 "data-language": "multi"
             }
         },
@@ -335,6 +349,14 @@
             "style": {
                 "label-text": "Style",
                 "database-name": "style",
+                "dont-show-if-empty": true,
+                "is-external-link": false,
+                "is-link-to-other-database": false,
+                "show-on-compact": false
+            },
+            "type": {
+                "label-text": "Type",
+                "database-name": "type",
                 "dont-show-if-empty": true,
                 "is-external-link": false,
                 "is-link-to-other-database": false,

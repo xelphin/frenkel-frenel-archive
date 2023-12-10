@@ -42,6 +42,7 @@ const fetchedAllData = Object.entries(devData).map(([content, data]) => {
 // RENDER DATA
 Promise.all(fetchedAllData).then(() => {
     DataFunctions.init(allFetchedData);
+    Menu.init(Cards.showCardsFor, Cards.showOnlyCards, Object.keys(devData)[0]);
     //
     Object.entries(allFetchedData).forEach(([content, data]) => {
         console.log("Creating cards for: ", content);
@@ -58,5 +59,5 @@ Using the above menthod, i created the: 'jsonUrl's
 */
 
 //  COSTUMIZE DOM (that can be done before all data was fetched)
-Menu.init(Cards.showCardsFor, Object.keys(devData)[0]);
+
 Cards.showCardsFor(Object.keys(devData)[0]); // Note: This is why it's important to hard code the containers in index.html
