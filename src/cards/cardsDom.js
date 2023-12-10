@@ -107,7 +107,8 @@ const CardsDom = (function CardsDom() {
     };
 
     const showCard = (card) => {
-        card.style.display = "flex";
+        const cardGiven = card;
+        cardGiven.style.display = "flex";
     }
 
     const hideCardsContainer = (containerId) => {
@@ -117,10 +118,10 @@ const CardsDom = (function CardsDom() {
     };
 
     const showCards = (container) => {
-        const {children} = container;
-        for (const child of children) {
+        const childrenArray = Array.from(container.children);
+        childrenArray.forEach((child) => {
             showCard(child);
-        }
+        });
     }
 
     const showCardsContainer = (containerId) => {
@@ -132,15 +133,16 @@ const CardsDom = (function CardsDom() {
 
     const showOnlyCards = (containerId, itemsIdToShow) => {
         const container = document.querySelector(`#${containerId}`);
-        const {children} = container;
-        for (const child of children) {
+        const childrenArray = Array.from(container.children);
+        childrenArray.forEach((child) => {
             if (itemsIdToShow.includes(child.id)) {
                 showCard(child);
             } else {
-                child.style.display = "none";
+                const childGiven = child;
+                childGiven.style.display = "none";
             }
             
-        }
+        })
     }
 
     const hideLoader = () => {
