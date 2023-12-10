@@ -43,6 +43,7 @@ const fetchedAllData = Object.entries(devData).map(([content, data]) => {
 Promise.all(fetchedAllData).then(() => {
     DataFunctions.init(allFetchedData);
     Menu.init(Cards.showCardsFor, Cards.showOnlyCards, Object.keys(devData)[0]);
+    Cards.hideLoader();
     //
     Object.entries(allFetchedData).forEach(([content, data]) => {
         console.log("Creating cards for: ", content);

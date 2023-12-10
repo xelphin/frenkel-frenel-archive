@@ -12,7 +12,11 @@ const Menu = (function Menu() {
     };
 
     // INIT
-    const init = (showCardsForCallback, showOnlyCardsCallback, firstShow = "articles") => {
+    const init = (
+        showCardsForCallback,
+        showOnlyCardsCallback,
+        firstShow = "articles",
+    ) => {
         showCardsFor = showCardsForCallback;
         Filter.init(showOnlyCardsCallback, firstShow);
         MenuDom.init(clickSwitchContent);

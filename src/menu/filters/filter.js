@@ -12,33 +12,45 @@ const Filter = (function Filter() {
 
     // SEARCH FUNCTIONS
     const search = (searchData) => {
-        console.log("Filters: ",searchData);
+        console.log("Filters: ", searchData);
         let items = Object.values(DataFunctions.getAllItems(currContent));
         // TODO: Continue here
         const filters = searchData.inputs;
         filters.forEach((filter) => {
             const filterName = filter.labelKey;
-            const filterInfo = DataFunctions.getLabelInfo(currContent, filter.labelKey);
+            const filterInfo = DataFunctions.getLabelInfo(
+                currContent,
+                filter.labelKey,
+            );
             const userInput = filter.result;
             if (userInput !== "" && filterInfo !== undefined) {
                 if (searchData.typeSearch === "exact") {
-                    items = ExactSearch.search(items, filterName, filterInfo, userInput);
-                    const itemsIdArray = items.map(obj => obj.id);
+                    items = ExactSearch.search(
+                        items,
+                        filterName,
+                        filterInfo,
+                        userInput,
+                    );
+                    const itemsIdArray = items.map((obj) => obj.id);
                     showOnlyCardsCallback(currContent, itemsIdArray);
-                } 
+                }
                 // else if (searchData.typeSearch === "nlp") {
-                    
+
                 // }
             }
         });
-        
-    }
+    };
 
     // FILTER CREATION FUNCTIONS
     const createFilterItems = (currContentType) => {
         const labelInfoObj = devData[currContentType].filterLabels;
         const containerId = getFilterContainer(currContentType); // the id of the container where the filter-items will populate
-        FilterDom.createFilterItems(labelInfoObj, containerId, currContentType, search);
+        FilterDom.createFilterItems(
+            labelInfoObj,
+            containerId,
+            currContentType,
+            search,
+        );
     };
 
     // Switch from showing filters of one content type, to another (example, from "articles"'s filters to "paintings"'s filters)
@@ -64,7 +76,7 @@ const Filter = (function Filter() {
     return {
         init,
         search,
-        switchToContent
+        switchToContent,
     };
 })();
 
