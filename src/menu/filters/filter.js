@@ -1,5 +1,7 @@
 import FilterDom from "./filterDom";
 import devData from "../../devData.json";
+import ExactSearch from "./search/exactSearch";
+import DataFunctions from "../../backend/dataFunctions";
 
 const Filter = (function Filter() {
     const filterContainerIdPostFix = "-filter-container";
@@ -8,20 +10,24 @@ const Filter = (function Filter() {
     const getFilterContainer = (name) => name + filterContainerIdPostFix;
 
     // SEARCH FUNCTIONS
-    const searchExact = (filteredData, info, filterBy, result) => {
-        if (result !== undefined && result !== "") {
-            if (info.application === "exact" || info.application === "similar") {
-                filteredData = ExactSearch.filterTextExact(filteredData, result, filterBy)
-            } else if (info.application === "range-min") {
-                filteredData = ExactSearch.filterRangeExact(filteredData, true, result, info.type, info["database-name"], info.template);
-            }
-            // TODO
-        }
-        return filteredData;
-    };
-
     const search = (searchData) => {
         console.log(searchData);
+        let items = Object.values(DataFunctions.getAllItems(currContent));
+        // TODO: Continue here
+        const filters = searchData.inputs;
+        filters.forEach((filter) => {
+            const filterName = filter.labelKey;
+            const filterInfo = DataFunctions.getLabelInfo(currContent, filter.labelKey);
+            const userInput = filter.result;
+            if (userInput !== "" && filterInfo !== undefined) {
+                if (searchData.typeSearch === "exact") {
+                    items = ExactSearch.search(items, filterName, filterInfo, userInput);
+                } else if (searchData.typeSearch === "nlp") {
+                    
+                }
+            }
+        });
+        console.log("Items after filtering: ", items);
     }
 
     // FILTER CREATION FUNCTIONS

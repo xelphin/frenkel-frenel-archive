@@ -1,11 +1,11 @@
 import SearchUtilities from "./searchUtilities";
 
 const ExactSearch = (function ExactSearch() {
-    const filterTextExact = (allItems, textToMatch, filterBy) => {
-        console.log(`Filtering: ${filterBy}, to match exact "${textToMatch}"`);
-        const matchWith = SearchUtilities.cleanText(textToMatch);
+    const filterExactMatch = (allItems, filterName, userInput) => {
+        console.log(`Filtering: ${filterName}, to match exact "${userInput}"`);
+        const matchWith = SearchUtilities.cleanText(userInput);
         const allMatches = allItems.filter((item) => {
-            const itemValue = SearchUtilities.cleanText(item[filterBy]);
+            const itemValue = SearchUtilities.cleanText(item[filterName]);
             if (itemValue === matchWith) {
                 return true;
             }
@@ -20,7 +20,7 @@ const ExactSearch = (function ExactSearch() {
             // Check is digit when 'x'
             if (template[i] === 'x' && isNaN(parseInt(str[i], 10))) return false;
             // Otherwise check same char
-            else if (template[i] !== str[i]) return false;
+            if (template[i] !== str[i]) return false;
         }
         return true;
     }
@@ -42,9 +42,16 @@ const ExactSearch = (function ExactSearch() {
         return allMatches;
     }
 
+    const search = (allItems, filterName, filterInfo, userInput ) => {
+        console.log("Received filter info: ", filterInfo);
+        if (filterInfo.application === "exact" || filterInfo.application === "similar") {
+            return filterExactMatch(allItems, filterName, userInput);
+        }
+        return allItems;
+    }
+
     return {
-        filterTextExact,
-        filterRangeExact
+        search
     };
 })();
 

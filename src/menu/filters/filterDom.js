@@ -2,13 +2,11 @@ const FilterDom = (function FilterDom() {
     const inputClassName = "filter-item-input";
     const allFiltersContainer = document.querySelector("#filter-container");
 
-    const makeInputId = (contentType, inputId) => {
-        return `${contentType}-item-input-${inputId}`;
-    }
+    const makeInputId = (contentType, inputId) => `${contentType}-item-input-${inputId}`
 
     const createButtonSearch = (contentType, className, text, type = "exact") => {
         const buttonSearch = document.createElement("button");
-        buttonSearch.id = contentType+"-"+className;
+        buttonSearch.id = `${contentType}-${className}`;
         buttonSearch.class = className;
         // buttonSearch.style.display = "none";
         buttonSearch.textContent = text;
@@ -24,7 +22,7 @@ const FilterDom = (function FilterDom() {
         //     <button id="<contentType>-filter-search-exact-btn" class="filter-search-exact-btn">Search Exact</button>
         // </div>
         const buttonsContainer = document.createElement("div");
-        buttonsContainer.id = contentType+"-buttons-container";
+        buttonsContainer.id = `${contentType}-buttons-container`;
         buttonsContainer.class = "buttons-container";
         const buttonSearch = createButtonSearch(contentType, "filter-search-btn", "Search", "nlp");
         const buttonSearchExact = createButtonSearch(contentType, "filter-search-exact-btn", "Search Exact", "exact");
@@ -70,7 +68,7 @@ const FilterDom = (function FilterDom() {
         filterItem.setAttribute("class", "filter-item");
         filterItem.appendChild(createLabel(infoObj["label-text"], contentType, key));
         let placeholder = infoObj["label-text"];
-        if (infoObj.hasOwnProperty('placeholder')) placeholder = infoObj.placeholder;
+        if (Object.prototype.hasOwnProperty.call(infoObj, 'placeholder')) placeholder = infoObj.placeholder;
         filterItem.appendChild(
             createInput(key, infoObj["label-text"], infoObj.type, placeholder, contentType),
         );
@@ -80,16 +78,14 @@ const FilterDom = (function FilterDom() {
 
     // INIT FORM
     const gatherAllInputs = (contentType) => {
-        let allInputsNodeList = document.getElementsByClassName(inputClassName);
-        let allInputs = Array.from(allInputsNodeList);
-        let inputsArr = [];
+        const allInputsNodeList = document.getElementsByClassName(inputClassName);
+        const allInputs = Array.from(allInputsNodeList);
+        const inputsArr = [];
         for (let i = 0; i < allInputs.length; i += 1) {
             if (allInputs[i].getAttribute("data-from") === contentType) {
-                let result = allInputs[i].value;
-                let name = allInputs[i].getAttribute("data-item");
-                let inputObj = {}
-                inputObj.name = name;
-                inputObj.result = result;
+                const inputObj = {}
+                inputObj.labelKey = allInputs[i].getAttribute("data-item");
+                inputObj.result = allInputs[i].value;
                 inputsArr[i] = inputObj;
             }
         }
@@ -101,9 +97,9 @@ const FilterDom = (function FilterDom() {
         const fromContent = event.submitter.getAttribute("data-from");
         const typeSearch = event.submitter.getAttribute("data-type");
         //
-        let inputsArr = gatherAllInputs(fromContent);
+        const inputsArr = gatherAllInputs(fromContent);
         //
-        let searchData = {}
+        const searchData = {}
         searchData.inputs = inputsArr;
         searchData.content = fromContent;
         searchData.typeSearch = typeSearch;

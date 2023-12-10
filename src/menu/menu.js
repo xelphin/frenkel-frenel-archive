@@ -8,14 +8,13 @@ const Menu = (function Menu() {
     const clickSwitchContent = (target) => {
         const newContentType = target.getAttribute("data-content");
         Filter.switchToContent(newContentType);
-        Search.updateOnContent(newContentType);
         showCardsFor(newContentType);
     };
 
     // INIT
     const init = (showCardsForCallback, firstShow = "articles") => {
         showCardsFor = showCardsForCallback;
-        Filter.init(firstShow);
+        Filter.init( firstShow);
         MenuDom.init(clickSwitchContent);
     };
 
