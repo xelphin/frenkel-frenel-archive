@@ -109,7 +109,7 @@ const CardsDom = (function CardsDom() {
     const showCard = (card) => {
         const cardGiven = card;
         cardGiven.style.display = "flex";
-    }
+    };
 
     const hideCardsContainer = (containerId) => {
         console.log("Container ID, hiding: ", containerId);
@@ -122,7 +122,7 @@ const CardsDom = (function CardsDom() {
         childrenArray.forEach((child) => {
             showCard(child);
         });
-    }
+    };
 
     const showCardsContainer = (containerId) => {
         console.log("Container ID, showing: ", containerId);
@@ -141,13 +141,12 @@ const CardsDom = (function CardsDom() {
                 const childGiven = child;
                 childGiven.style.display = "none";
             }
-            
-        })
-    }
+        });
+    };
 
     const hideLoader = () => {
         loader.style.display = "none";
-    }
+    };
 
     const init = (dataFunctions) => {
         dataFunctionsMod = dataFunctions;

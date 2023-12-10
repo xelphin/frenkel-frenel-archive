@@ -118,7 +118,7 @@ const DataFunctions = (function DataFunctions() {
     const getAllItems = (contentType) => {
         console.log("Sending all items: ", allFetchedData[contentType].sheet);
         return allFetchedData[contentType].sheet;
-    }
+    };
 
     const init = (allFetchedDataObj) => {
         allFetchedData = allFetchedDataObj;

@@ -41,18 +41,17 @@ const Cards = (function Cards() {
     const showOnlyCards = (contentType, itemsIdToShow) => {
         const containerId = devData[contentType].dom.cardsContainerId;
         CardsDom.showOnlyCards(containerId, itemsIdToShow);
-
-    }
+    };
 
     const hideLoader = () => {
         CardsDom.hideLoader();
-    }
+    };
 
     return {
         createCards,
         showCardsFor,
         showOnlyCards,
-        hideLoader
+        hideLoader,
     };
 })();
 

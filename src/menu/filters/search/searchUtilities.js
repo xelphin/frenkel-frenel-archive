@@ -21,16 +21,18 @@ const SearchUtilities = (function SearchUtilities() {
         // Get the smallest of the dates
         const textSep = text.split(",");
         const dates = textSep.map(getFromTextTheDateAux);
-        const smallestDate = dates.reduce((minDate, currentDate) => (
-            currentDate < minDate ? currentDate : minDate
-        ), dates[0]);
+        const smallestDate = dates.reduce(
+            (minDate, currentDate) =>
+                currentDate < minDate ? currentDate : minDate,
+            dates[0],
+        );
         return smallestDate;
     };
 
     const cleanText = (text) => {
         let newText = text.toLowerCase();
         newText = newText.trim();
-        newText = newText.replace(/\s+/g, ' ');
+        newText = newText.replace(/\s+/g, " ");
         return newText;
     };
 
