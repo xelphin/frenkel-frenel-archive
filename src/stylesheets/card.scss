@@ -16,7 +16,9 @@
         align-items: center;
         justify-content: center;
         border: 0.8px solid $color1-type2;
-        transition: 0.05s linear transform, 0.05s linear color;
+        transition:
+            0.05s linear transform,
+            0.05s linear color;
 
         .card-image-container {
             width: 280px;

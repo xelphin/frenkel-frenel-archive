@@ -105,17 +105,42 @@ const CardsDom = (function CardsDom() {
         return card;
     };
 
+    const showCard = (card) => {
+        card.style.display = "flex";
+    }
+
     const hideCardsContainer = (containerId) => {
         console.log("Container ID, hiding: ", containerId);
         const container = document.querySelector(`#${containerId}`);
         container.style.display = "none";
     };
 
+    const showCards = (container) => {
+        const children = container.children;
+        for (const child of children) {
+            showCard(child);
+        }
+    }
+
     const showCardsContainer = (containerId) => {
         console.log("Container ID, showing: ", containerId);
         const container = document.querySelector(`#${containerId}`);
         container.style.display = "flex";
+        showCards(container);
     };
+
+    const showOnlyCards = (containerId, itemsIdToShow) => {
+        const container = document.querySelector(`#${containerId}`);
+        const children = container.children;
+        for (const child of children) {
+            if (itemsIdToShow.includes(child.id)) {
+                showCard(child);
+            } else {
+                child.style.display = "none";
+            }
+            
+        }
+    }
 
     const init = (dataFunctions) => {
         dataFunctionsMod = dataFunctions;
@@ -127,6 +152,7 @@ const CardsDom = (function CardsDom() {
         hideCardsContainer,
         showCardsContainer,
         cardCreator,
+        showOnlyCards,
         init,
     };
 })();

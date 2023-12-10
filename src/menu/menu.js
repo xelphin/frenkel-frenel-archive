@@ -12,9 +12,9 @@ const Menu = (function Menu() {
     };
 
     // INIT
-    const init = (showCardsForCallback, firstShow = "articles") => {
+    const init = (showCardsForCallback, showOnlyCardsCallback, firstShow = "articles") => {
         showCardsFor = showCardsForCallback;
-        Filter.init(firstShow);
+        Filter.init(showOnlyCardsCallback, firstShow);
         MenuDom.init(clickSwitchContent);
     };
 
