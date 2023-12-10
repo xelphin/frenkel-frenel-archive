@@ -48,7 +48,7 @@
             "min-date": {
                 "label-text": "From",
                 "database-name": "date",
-                "type": "text",
+                "type": "date",
                 "type-range": "date",
                 "application": "range-min",
                 "data-language": "",
@@ -58,7 +58,7 @@
             "max-date": {
                 "label-text": "To",
                 "database-name": "date",
-                "type": "text",
+                "type": "date",
                 "type-range": "date",
                 "application": "range-max",
                 "data-language": "",

@@ -1,11 +1,40 @@
 const FilterDom = (function FilterDom() {
+    const inputClassName = "filter-item-input";
     const allFiltersContainer = document.querySelector("#filter-container");
 
     const makeInputId = (contentType, inputId) => {
         return `${contentType}-item-input-${inputId}`;
     }
 
-    // HELPER
+    const createButtonSearch = (contentType, className, text, type = "exact") => {
+        const buttonSearch = document.createElement("button");
+        buttonSearch.id = contentType+"-"+className;
+        buttonSearch.class = className;
+        // buttonSearch.style.display = "none";
+        buttonSearch.textContent = text;
+        buttonSearch.setAttribute("data-from", contentType);
+        buttonSearch.setAttribute("data-type", type);
+        return buttonSearch;
+    }
+
+    // CREATE SUBMIT BUTTONS
+    const createSubmitButtons = (contentType) => {
+        // <div id="<contentType>-buttons-container" class="buttons-container">
+        //     <button id="<contentType>-filter-search-btn" class="filter-search-btn">Search</button>
+        //     <button id="<contentType>-filter-search-exact-btn" class="filter-search-exact-btn">Search Exact</button>
+        // </div>
+        const buttonsContainer = document.createElement("div");
+        buttonsContainer.id = contentType+"-buttons-container";
+        buttonsContainer.class = "buttons-container";
+        const buttonSearch = createButtonSearch(contentType, "filter-search-btn", "Search", "nlp");
+        const buttonSearchExact = createButtonSearch(contentType, "filter-search-exact-btn", "Search Exact", "exact");
+        buttonsContainer.appendChild(buttonSearch);
+        buttonsContainer.appendChild(buttonSearchExact);
+        return buttonsContainer;
+
+    }
+
+    // HELPER (Create Filter Items)
     const createLabel = (labelText, contentType, inputId) => {
         const label = document.createElement("label");
         label.textContent = `${labelText}:`;
@@ -18,7 +47,7 @@ const FilterDom = (function FilterDom() {
         const input = document.createElement("input");
         input.id = makeInputId(contentType, inputId);
         input.type = type;
-        input.classList.add("filter-item-input");
+        input.classList.add(inputClassName);
         input.setAttribute("data-item", inputId);
         input.setAttribute("data-from", contentType);
         input.placeholder = placeholder;
@@ -26,6 +55,17 @@ const FilterDom = (function FilterDom() {
     };
 
     const createFilterItem = (infoObj, key, contentType) => {
+        /*
+            <div class="filter-item">
+                <label class="filter-item-label">Author:</label>
+                <input
+                    type="<type>"
+                    placeholder="<label-text>"
+                    class="filter-item-input"
+                    id = "item-input-<[key of object]>"
+                />
+            </div>
+        */
         const filterItem = document.createElement("div");
         filterItem.setAttribute("class", "filter-item");
         filterItem.appendChild(createLabel(infoObj["label-text"], contentType, key));
@@ -38,21 +78,47 @@ const FilterDom = (function FilterDom() {
         return filterItem;
     };
 
-    // CREATE FILTER ITEM
-    const createFilterItems = (labelInfoObj, containerId, contentType) => {
-        /*
-            <div class="filter-item">
-                <label class="filter-item-label">Author:</label>
-                <input
-                    type="<type>"
-                    placeholder="<label-text>"
-                    class="filter-item-input"
-                    id = "item-input-<[key of object]>"
-                />
-            </div>
-        */
-        const container = document.querySelector(`#${containerId}`);
+    // INIT FORM
+    const gatherAllInputs = (contentType) => {
+        let allInputsNodeList = document.getElementsByClassName(inputClassName);
+        let allInputs = Array.from(allInputsNodeList);
+        let inputsArr = [];
+        for (let i = 0; i < allInputs.length; i += 1) {
+            if (allInputs[i].getAttribute("data-from") === contentType) {
+                let result = allInputs[i].value;
+                let name = allInputs[i].getAttribute("data-item");
+                let inputObj = {}
+                inputObj.name = name;
+                inputObj.result = result;
+                inputsArr[i] = inputObj;
+            }
+        }
+        return inputsArr;
+    }
 
+    const getSearchData = (event, searchCallback) => {
+        event.preventDefault()
+        const fromContent = event.submitter.getAttribute("data-from");
+        const typeSearch = event.submitter.getAttribute("data-type");
+        //
+        let inputsArr = gatherAllInputs(fromContent);
+        //
+        let searchData = {}
+        searchData.inputs = inputsArr;
+        searchData.content = fromContent;
+        searchData.typeSearch = typeSearch;
+        //
+        searchCallback(searchData);
+    }
+
+    const initForm = (form, searchCallback) => {
+        form.addEventListener('submit', (event) => getSearchData(event, searchCallback));
+    }
+
+    // CREATE FILTER ITEM
+    const createFilterItems = (labelInfoObj, containerId, contentType, searchCallback) => {
+        const container = document.querySelector(`#${containerId}`);
+        // Add items
         Object.entries(labelInfoObj).forEach(([key, value]) => {
             let item;
             try {
@@ -65,6 +131,9 @@ const FilterDom = (function FilterDom() {
 
             container.appendChild(item);
         });
+        // Add submit buttons
+        container.appendChild(createSubmitButtons(contentType));
+        initForm(container, searchCallback);
     };
 
     // HIDE/SHOW FILTER ITEMS

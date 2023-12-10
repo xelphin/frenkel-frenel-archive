@@ -1,6 +1,5 @@
 import Filter from "./filters/filter";
 import MenuDom from "./menuDom";
-import Search from "./search/search";
 
 const Menu = (function Menu() {
     let showCardsFor;
@@ -18,7 +17,6 @@ const Menu = (function Menu() {
         showCardsFor = showCardsForCallback;
         Filter.init(firstShow);
         MenuDom.init(clickSwitchContent);
-        Search.init(firstShow);
     };
 
     return {
