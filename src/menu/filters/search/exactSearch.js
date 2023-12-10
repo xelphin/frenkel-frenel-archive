@@ -5,9 +5,9 @@ const ExactSearch = (function ExactSearch() {
         console.log(`Filtering: ${databaseName}, to match exact "${userInput}"`);
         const matchWith = SearchUtilities.cleanText(userInput);
         const allMatches = allItems.filter((item) => {
-            const itemValue = SearchUtilities.cleanText(item[databaseName]);
-            // TODO: make that given "english" and article has "english, hebrew" to still return true
-            if (itemValue === matchWith) {
+            let itemValues = item[databaseName].split(",");
+            itemValues = itemValues.map((str) => SearchUtilities.cleanText(str));
+            if (itemValues.includes(matchWith) || itemValues[0] === matchWith) {
                 return true;
             }
             return false;
