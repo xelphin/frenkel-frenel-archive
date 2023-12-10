@@ -23,10 +23,10 @@ const FilterDom = (function FilterDom() {
         // </div>
         const buttonsContainer = document.createElement("div");
         buttonsContainer.id = `${contentType}-buttons-container`;
-        buttonsContainer.class = "buttons-container";
-        const buttonSearch = createButtonSearch(contentType, "filter-search-btn", "Search", "nlp");
+        buttonsContainer.classList.add("buttons-container");
+        // const buttonSearch = createButtonSearch(contentType, "filter-search-btn", "Search", "nlp");
         const buttonSearchExact = createButtonSearch(contentType, "filter-search-exact-btn", "Search Exact", "exact");
-        buttonsContainer.appendChild(buttonSearch);
+        // buttonsContainer.appendChild(buttonSearch);
         buttonsContainer.appendChild(buttonSearchExact);
         return buttonsContainer;
 
@@ -131,6 +131,7 @@ const FilterDom = (function FilterDom() {
             container.appendChild(item);
         });
         // Add submit buttons
+        container.appendChild(document.createElement("br"));
         container.appendChild(createSubmitButtons(contentType));
         initForm(container, searchCallback);
     };

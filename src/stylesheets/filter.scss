@@ -37,7 +37,7 @@
         }
     }
 
-    #buttons-container {
+    .buttons-container {
         padding-bottom: 20px;
 
         button {
@@ -47,6 +47,7 @@
             padding: 5px 15px;
             border-radius: 10%;
             transition: 0.1s linear transform;
+            margin-right: 20px;
         }
         button:hover {
             background-color: $color3-type1;

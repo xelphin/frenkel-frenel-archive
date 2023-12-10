@@ -31,7 +31,7 @@ const ExactSearch = (function ExactSearch() {
         if (type === "date") {
             edgeValue = new Date(userInput);
         } else if (type === "number") {
-            edgeValue = parseInt(userInput);
+            edgeValue = parseInt(userInput, 10);
         }
         try {
             const allMatches = allItems.filter((item) => {
@@ -39,7 +39,7 @@ const ExactSearch = (function ExactSearch() {
                 if (type === "date") {
                     itemValue = SearchUtilities.getFromTextTheDate(itemValue);
                 } else if (type === "number") {
-                    itemValue = parseInt(itemValue);
+                    itemValue = parseInt(itemValue, 10);
                 }
                 if (itemValue === undefined || edgeValue === undefined) {
                     return false;
@@ -49,10 +49,10 @@ const ExactSearch = (function ExactSearch() {
                 if (edgeValue <= itemValue) {
                     if (wantAbove) return true;
                     return false;
-                } else {
-                    if (!wantAbove) return true;
-                    return false;
-                }
+                } 
+                if (!wantAbove) return true;
+                return false;
+                
             });
             return allMatches;
         } catch (error) {
@@ -65,7 +65,7 @@ const ExactSearch = (function ExactSearch() {
         if (!userInput) return allItems;
         // We want to filter
         const allMatches = allItems.filter((item) => {
-            let itemValue = item[databaseName];
+            const itemValue = item[databaseName];
             if (itemValue !== "") {
                 return true;
             }

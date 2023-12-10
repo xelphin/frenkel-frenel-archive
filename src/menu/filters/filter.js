@@ -25,9 +25,10 @@ const Filter = (function Filter() {
                     items = ExactSearch.search(items, filterName, filterInfo, userInput);
                     const itemsIdArray = items.map(obj => obj.id);
                     showOnlyCardsCallback(currContent, itemsIdArray);
-                } else if (searchData.typeSearch === "nlp") {
+                } 
+                // else if (searchData.typeSearch === "nlp") {
                     
-                }
+                // }
             }
         });
         
