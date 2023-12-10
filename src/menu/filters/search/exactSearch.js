@@ -53,6 +53,20 @@ const ExactSearch = (function ExactSearch() {
         }
     }
 
+    const filterHas = (allItems, databaseName, userInput) => {
+        if (userInput !== "on") return allItems;
+        // We want to filter
+        const allMatches = allItems.filter((item) => {
+            let itemValue = item[databaseName];
+            console.log("Checking itemValue: ", itemValue);
+            if (itemValue !== "") {
+                return true;
+            }
+            return false;
+        });
+        return allMatches;
+    }
+
     const search = (allItems, filterName, filterInfo, userInput ) => {
         console.log("Received filter info: ", filterInfo);
         const databaseName = filterInfo["database-name"];
@@ -64,6 +78,9 @@ const ExactSearch = (function ExactSearch() {
         }
         if (filterInfo.application === "range-max") {
             return filterRangeExact(allItems, false, userInput, filterInfo.type, databaseName);
+        }
+        if (filterInfo.application === "has") {
+            return filterHas(allItems, databaseName, userInput);
         }
         return allItems;
     }

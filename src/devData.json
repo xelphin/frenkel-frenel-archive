@@ -90,7 +90,7 @@
                 "label-text": "From Website",
                 "database-name": "websiteLink",
                 "type": "checkbox",
-                "application": "has-input",
+                "application": "has",
                 "data-language": ""
             }
         },
