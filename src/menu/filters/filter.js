@@ -12,8 +12,7 @@ const Filter = (function Filter() {
     const getFilterContainer = (name) => name + filterContainerIdPostFix;
 
     const createPointArray = (items) => {
-        let points = {};
-
+        const points = {};
         items.forEach((item) => {
             points[item.id] = 1;
         }); 

@@ -1,31 +1,10 @@
 // Works by giving points (the more points, the better the matchimport SearchUtilities from "./searchUtilities";
 
-const stringSimilarity = require("string-similarity");
 import SearchUtilities from "./searchUtilities";
 
+const stringSimilarity = require("string-similarity");
+
 const NLPSearch = (function NLPSearch() {
-
-
-    const levenshteinDistance = (s, t) => {
-        // https://www.30secondsofcode.org/js/s/levenshtein-distance/
-        if (!s.length) return t.length;
-        if (!t.length) return s.length;
-        const arr = [];
-        for (let i = 0; i <= t.length; i++) {
-          arr[i] = [i];
-          for (let j = 1; j <= s.length; j++) {
-            arr[i][j] =
-              i === 0
-                ? j
-                : Math.min(
-                    arr[i - 1][j] + 1,
-                    arr[i][j - 1] + 1,
-                    arr[i - 1][j - 1] + (s[j - 1] === t[i - 1] ? 0 : 1)
-                  );
-          }
-        }
-        return 1/(arr[t.length][s.length]+0.01);
-    };
 
     const calculateCloseness = (v1, v2, type) => {
         let diff;
@@ -50,7 +29,7 @@ const NLPSearch = (function NLPSearch() {
             `Points: ${databaseName}, by wanting above? ${wantAbove} the value ${userInput}, the type of the value is ${type}`,
         );
         // Filter
-        let newPoints = {};
+        const newPoints = {};
         let edgeValue = userInput;
         if (type === "date") {
             edgeValue = new Date(userInput);
@@ -59,9 +38,9 @@ const NLPSearch = (function NLPSearch() {
         }
         try {
             allItems.forEach((item) => {
-                let itemId = item.id;
+                const itemId = item.id;
                 let itemValue = item[databaseName];
-                let pointCurr = points[itemId];
+                const pointCurr = points[itemId];
                 if (type === "date") {
                     itemValue = SearchUtilities.getFromTextTheDate(itemValue);
                 } else if (type === "number") {
@@ -70,24 +49,18 @@ const NLPSearch = (function NLPSearch() {
                 if (itemValue === undefined || edgeValue === undefined) {
                     newPoints[itemId] = pointCurr*0.3;
                 }
-                else {s
-                    if (edgeValue <= itemValue) {
+                else if (edgeValue <= itemValue) {
                         if (wantAbove) {
                             newPoints[itemId] = pointCurr*2;
                         } else {
                             newPoints[itemId] = pointCurr*calculateCloseness(itemValue, edgeValue, type);
                         }
                     }
-                    else  {
-                        if (!wantAbove) {
+                    else  if (!wantAbove) {
                             newPoints[itemId] = pointCurr*2;
                         } else {
                             newPoints[itemId] = pointCurr*calculateCloseness(itemValue, edgeValue, type);
                         }
-                    }
-                }
-
-
             });
             return newPoints;
         } catch (error) {
@@ -97,10 +70,10 @@ const NLPSearch = (function NLPSearch() {
     };
 
     const applySimilarPoints = (allItems, databaseName, userInput, points) => {
-        let newPoints = {};
+        const newPoints = {};
         allItems.forEach((item) => {
-            let itemId = item.id;
-            let itemValue = item[databaseName];
+            const itemId = item.id;
+            const itemValue = item[databaseName];
             if (itemValue === "" || userInput === "") {
                 newPoints[itemId] = points[itemId]*0.01;
             } else {
@@ -114,20 +87,18 @@ const NLPSearch = (function NLPSearch() {
         console.log(
             `applyExactPoints: ${databaseName}, userInput ${userInput}`,
         );
-        let newPoints = {};
-        let cleanUserInput = SearchUtilities.cleanText(userInput);
+        const newPoints = {};
+        const cleanUserInput = SearchUtilities.cleanText(userInput);
         allItems.forEach((item) => {
-            let itemId = item.id;
-            let itemValue = SearchUtilities.cleanText(item[databaseName]);
+            const itemId = item.id;
+            const itemValue = SearchUtilities.cleanText(item[databaseName]);
             if (itemValue === "" || cleanUserInput === "") {
                 newPoints[itemId] = points[itemId]*0.01;
-            } else {
-                if (itemValue === cleanUserInput) {
+            } else if (itemValue === cleanUserInput) {
                     newPoints[itemId] = points[itemId]*2;
                 } else {
                     newPoints[itemId] = points[itemId]/4;
                 }
-            }
         });
         return newPoints; 
     }
@@ -137,10 +108,10 @@ const NLPSearch = (function NLPSearch() {
             `applyHasPoints: ${databaseName}, userInput ${userInput}`,
         );
         if (!userInput) return points;
-        let newPoints = {};
+        const newPoints = {};
         allItems.forEach((item) => {
-            let itemId = item.id;
-            let itemValue = item[databaseName];
+            const itemId = item.id;
+            const itemValue = item[databaseName];
             if (itemValue === "") {
                 // Doesn't have value
                 newPoints[itemId] = points[itemId]*0.2;
@@ -154,10 +125,10 @@ const NLPSearch = (function NLPSearch() {
 
     const checkSimilarArraysOfStrings = (user, item) => {
         let score = 1;
-        for (let i=0; i< user.length; i++) {
+        for (let i=0; i< user.length; i+=1) {
             let closest = 0.1;
-            for (let j=0; j < item.length; j++) {
-                let calc = stringSimilarity.compareTwoStrings(user[i], item[j]);
+            for (let j=0; j < item.length; j+=1) {
+                const calc = stringSimilarity.compareTwoStrings(user[i], item[j]);
                 if (closest < calc) {
                     closest = calc;
                 }
@@ -173,11 +144,11 @@ const NLPSearch = (function NLPSearch() {
         console.log(
             `applySimilarTagsPoints: ${databaseName}, userInput ${userInput}`,
         );
-        let newPoints = {};
+        const newPoints = {};
         let userTags = userInput.split(",");
         userTags = userTags.map((str) => SearchUtilities.cleanText(str));
         allItems.forEach((item) => {
-            let itemId = item.id;
+            const itemId = item.id;
             if (item[databaseName] === "") {
                 newPoints[itemId] = points[itemId]*0.01;
             } else {
@@ -192,9 +163,9 @@ const NLPSearch = (function NLPSearch() {
 
     const getSortedArrayOfIdsFromPoints = (points) => {
         // turn into array (key = id , value = points)
-        let keyValueArray = Object.entries(points).map(([key, value]) => ({ key, value }));
+        const keyValueArray = Object.entries(points).map(([key, value]) => ({ key, value }));
         // sort by point value
-        let sorted = keyValueArray.sort((a, b) => b.value - a.value);
+        const sorted = keyValueArray.sort((a, b) => b.value - a.value);
         // keep only the ids
         return sorted.map(item => item.key);
     }
