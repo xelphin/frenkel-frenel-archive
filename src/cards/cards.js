@@ -46,7 +46,7 @@ const Cards = (function Cards() {
     const reOrderCards = (contentType, orderedIds) => {
         const containerId = devData[contentType].dom.cardsContainerId;
         CardsDom.reOrderCards(containerId, orderedIds);
-    }
+    };
 
     const hideLoader = () => {
         CardsDom.hideLoader();
@@ -57,7 +57,7 @@ const Cards = (function Cards() {
         showCardsFor,
         showOnlyCards,
         hideLoader,
-        reOrderCards
+        reOrderCards,
     };
 })();
 

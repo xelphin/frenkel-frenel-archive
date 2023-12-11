@@ -151,16 +151,16 @@ const CardsDom = (function CardsDom() {
     const reOrderCards = (containerId, orderedIds) => {
         console.log("Rearranging");
         const container = document.querySelector(`#${containerId}`);
-        let fragment = document.createDocumentFragment();
-        // 
-        orderedIds.forEach(function(childId) {
-            let child = document.getElementById(childId);
+        const fragment = document.createDocumentFragment();
+        //
+        orderedIds.forEach((childId) => {
+            const child = document.getElementById(childId);
             if (child) {
                 fragment.appendChild(child);
             }
         });
         container.appendChild(fragment);
-    }
+    };
 
     const init = (dataFunctions) => {
         dataFunctionsMod = dataFunctions;

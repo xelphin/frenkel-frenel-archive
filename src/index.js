@@ -16,8 +16,8 @@ const allFetchedData = {};
 const cardsCallbacks = {
     showCardsFor: Cards.showCardsFor,
     showOnlyCards: Cards.showOnlyCards,
-    reOrderCards: Cards.reOrderCards
-}
+    reOrderCards: Cards.reOrderCards,
+};
 
 // FETCH DATA
 const fetchedAllData = Object.entries(devData).map(([content, data]) => {

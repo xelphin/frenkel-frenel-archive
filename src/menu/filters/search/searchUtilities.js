@@ -22,7 +22,7 @@ const SearchUtilities = (function SearchUtilities() {
     const getFromTextTheDate = (text) => {
         if (text === "") return undefined;
         // Get the smallest of the dates
-        let startText = text.split("-")[0];
+        const startText = text.split("-")[0];
         const textSep = startText.split(",");
         const dates = textSep.map(getFromTextTheDateAux);
         const smallestDate = dates.reduce(

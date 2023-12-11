@@ -16,9 +16,9 @@ const Filter = (function Filter() {
         const points = {};
         items.forEach((item) => {
             points[item.id] = 1;
-        }); 
+        });
         return points;
-    }
+    };
 
     // SEARCH FUNCTIONS
     const search = (searchData) => {
@@ -42,14 +42,13 @@ const Filter = (function Filter() {
                         filterInfo,
                         userInput,
                     );
-                }
-                else if (searchData.typeSearch === "nlp") {
+                } else if (searchData.typeSearch === "nlp") {
                     points = NLPSearch.search(
                         items,
                         filterName,
                         filterInfo,
                         userInput,
-                        points
+                        points,
                     );
                     console.log(`After filter ${filterName}: `, points);
                 }
@@ -59,11 +58,11 @@ const Filter = (function Filter() {
             const itemsIdArray = items.map((obj) => obj.id);
             showOnlyCardsCallback(currContent, itemsIdArray);
         } else if (searchData.typeSearch === "nlp") {
-            const itemsIdArray = NLPSearch.getSortedArrayOfIdsFromPoints(points);
+            const itemsIdArray =
+                NLPSearch.getSortedArrayOfIdsFromPoints(points);
             console.log("sorted ids: ", itemsIdArray);
             reOrderCardsCallback(currContent, itemsIdArray);
         }
-
     };
 
     // FILTER CREATION FUNCTIONS
