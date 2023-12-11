@@ -88,7 +88,8 @@ const ExactSearch = (function ExactSearch() {
         const databaseName = filterInfo["database-name"];
         if (
             filterInfo.application === "exact" ||
-            filterInfo.application === "similar"
+            filterInfo.application === "similar" ||
+            filterInfo.application === "similar-tags"
         ) {
             return filterExactMatch(allItems, databaseName, userInput);
         }

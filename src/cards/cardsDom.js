@@ -148,6 +148,20 @@ const CardsDom = (function CardsDom() {
         loader.style.display = "none";
     };
 
+    const reOrderCards = (containerId, orderedIds) => {
+        console.log("Rearranging");
+        const container = document.querySelector(`#${containerId}`);
+        const fragment = document.createDocumentFragment();
+        //
+        orderedIds.forEach((childId) => {
+            const child = document.getElementById(childId);
+            if (child) {
+                fragment.appendChild(child);
+            }
+        });
+        container.appendChild(fragment);
+    };
+
     const init = (dataFunctions) => {
         dataFunctionsMod = dataFunctions;
     };
@@ -160,6 +174,7 @@ const CardsDom = (function CardsDom() {
         cardCreator,
         showOnlyCards,
         hideLoader,
+        reOrderCards,
         init,
     };
 })();
