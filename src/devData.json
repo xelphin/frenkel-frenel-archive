@@ -276,7 +276,7 @@
                 "label-text": "People",
                 "database-name": "people",
                 "type": "text",
-                "application": "similar",
+                "application": "similar-tags",
                 "data-language": "multi"
             }
         },

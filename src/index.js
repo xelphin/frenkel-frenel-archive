@@ -13,6 +13,10 @@ import devData from "./devData.json";
 // ------------------------------
 
 const allFetchedData = {};
+const cardsCallbacks = {
+    showCardsFor: Cards.showCardsFor,
+    showOnlyCards: Cards.showOnlyCards
+}
 
 // FETCH DATA
 const fetchedAllData = Object.entries(devData).map(([content, data]) => {
@@ -42,7 +46,7 @@ const fetchedAllData = Object.entries(devData).map(([content, data]) => {
 // RENDER DATA
 Promise.all(fetchedAllData).then(() => {
     DataFunctions.init(allFetchedData);
-    Menu.init(Cards.showCardsFor, Cards.showOnlyCards, Object.keys(devData)[0]);
+    Menu.init(cardsCallbacks, Object.keys(devData)[0]);
     Cards.hideLoader();
     //
     Object.entries(allFetchedData).forEach(([content, data]) => {

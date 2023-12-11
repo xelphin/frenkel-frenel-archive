@@ -13,12 +13,11 @@ const Menu = (function Menu() {
 
     // INIT
     const init = (
-        showCardsForCallback,
-        showOnlyCardsCallback,
+        cardsCallbacks,
         firstShow = "articles",
     ) => {
-        showCardsFor = showCardsForCallback;
-        Filter.init(showOnlyCardsCallback, firstShow);
+        showCardsFor = cardsCallbacks.showCardsFor;
+        Filter.init(cardsCallbacks, firstShow);
         MenuDom.init(clickSwitchContent);
     };
 

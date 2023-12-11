@@ -1,6 +1,7 @@
 import FilterDom from "./filterDom";
 import devData from "../../devData.json";
 import ExactSearch from "./search/exactSearch";
+import NLPSearch from "./search/nlpSearch";
 import DataFunctions from "../../backend/dataFunctions";
 
 const Filter = (function Filter() {
@@ -10,10 +11,20 @@ const Filter = (function Filter() {
 
     const getFilterContainer = (name) => name + filterContainerIdPostFix;
 
+    const createPointArray = (items) => {
+        let points = {};
+
+        items.forEach((item) => {
+            points[item.id] = 1;
+        }); 
+        return points;
+    }
+
     // SEARCH FUNCTIONS
     const search = (searchData) => {
         console.log("Filters: ", searchData);
         let items = Object.values(DataFunctions.getAllItems(currContent));
+        let points = createPointArray(items);
         // TODO: Continue here
         const filters = searchData.inputs;
         filters.forEach((filter) => {
@@ -31,14 +42,27 @@ const Filter = (function Filter() {
                         filterInfo,
                         userInput,
                     );
-                    const itemsIdArray = items.map((obj) => obj.id);
-                    showOnlyCardsCallback(currContent, itemsIdArray);
                 }
-                // else if (searchData.typeSearch === "nlp") {
-
-                // }
+                else if (searchData.typeSearch === "nlp") {
+                    points = NLPSearch.search(
+                        items,
+                        filterName,
+                        filterInfo,
+                        userInput,
+                        points
+                    );
+                    console.log(`After filter ${filterName}: `, points);
+                }
             }
         });
+        if (searchData.typeSearch === "exact") {
+            const itemsIdArray = items.map((obj) => obj.id);
+            showOnlyCardsCallback(currContent, itemsIdArray);
+        } else if (searchData.typeSearch === "nlp") {
+            const itemsIdArray = NLPSearch.getSortedArrayOfIdsFromPoints(points);
+            console.log("sorted ids: ", itemsIdArray);
+        }
+
     };
 
     // FILTER CREATION FUNCTIONS
@@ -63,14 +87,14 @@ const Filter = (function Filter() {
     };
 
     // INIT
-    const init = (showOnlyCardsCallbackSent, firstShow = "articles") => {
+    const init = (cardsCallbacks, firstShow = "articles") => {
         Object.keys(devData).forEach((content) => {
             createFilterItems(content);
         });
         // Show only filter items from one content type
         FilterDom.hideAllFilterItems();
         switchToContent(firstShow);
-        showOnlyCardsCallback = showOnlyCardsCallbackSent;
+        showOnlyCardsCallback = cardsCallbacks.showOnlyCards;
     };
 
     return {

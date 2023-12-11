@@ -30,14 +30,14 @@ const FilterDom = (function FilterDom() {
         const buttonsContainer = document.createElement("div");
         buttonsContainer.id = `${contentType}-buttons-container`;
         buttonsContainer.classList.add("buttons-container");
-        // const buttonSearch = createButtonSearch(contentType, "filter-search-btn", "Search", "nlp");
+        const buttonSearch = createButtonSearch(contentType, "filter-search-btn", "Search", "nlp");
         const buttonSearchExact = createButtonSearch(
             contentType,
             "filter-search-exact-btn",
             "Search Exact",
             "exact",
         );
-        // buttonsContainer.appendChild(buttonSearch);
+        buttonsContainer.appendChild(buttonSearch);
         buttonsContainer.appendChild(buttonSearchExact);
         return buttonsContainer;
     };
