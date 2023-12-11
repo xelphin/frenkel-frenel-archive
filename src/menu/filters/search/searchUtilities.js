@@ -1,7 +1,7 @@
 const SearchUtilities = (function SearchUtilities() {
     const createDate = (year, month = 1, day = 1) => {
         const date = new Date();
-        console.log(`creating date y:${year}, m:${month}, d:${day}`)
+        // console.log(`creating date y:${year}, m:${month}, d:${day}`)
         date.setFullYear(Number(year));
         date.setMonth(Number(month - 1));
         date.setDate(Number(day));
@@ -10,9 +10,9 @@ const SearchUtilities = (function SearchUtilities() {
 
     const getFromTextTheDateAux = (text) => {
         // Get the date
-        console.log(`text given`, text);
+        // console.log(`text given`, text);
         const date = text.split("/");
-        console.log(`date given`, date);
+        // console.log(`date given`, date);
         if (date.length === 3) return createDate(date[2], date[1], date[0]);
         if (date.length === 2) return createDate(date[1], date[0]);
         if (date.length === 1) return createDate(date[0]);

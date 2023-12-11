@@ -15,7 +15,8 @@ import devData from "./devData.json";
 const allFetchedData = {};
 const cardsCallbacks = {
     showCardsFor: Cards.showCardsFor,
-    showOnlyCards: Cards.showOnlyCards
+    showOnlyCards: Cards.showOnlyCards,
+    reOrderCards: Cards.reOrderCards
 }
 
 // FETCH DATA

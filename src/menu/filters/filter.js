@@ -8,6 +8,7 @@ const Filter = (function Filter() {
     const filterContainerIdPostFix = "-filter-container";
     let currContent = "articles";
     let showOnlyCardsCallback;
+    let reOrderCardsCallback;
 
     const getFilterContainer = (name) => name + filterContainerIdPostFix;
 
@@ -60,6 +61,7 @@ const Filter = (function Filter() {
         } else if (searchData.typeSearch === "nlp") {
             const itemsIdArray = NLPSearch.getSortedArrayOfIdsFromPoints(points);
             console.log("sorted ids: ", itemsIdArray);
+            reOrderCardsCallback(currContent, itemsIdArray);
         }
 
     };
@@ -94,6 +96,7 @@ const Filter = (function Filter() {
         FilterDom.hideAllFilterItems();
         switchToContent(firstShow);
         showOnlyCardsCallback = cardsCallbacks.showOnlyCards;
+        reOrderCardsCallback = cardsCallbacks.reOrderCards;
     };
 
     return {
