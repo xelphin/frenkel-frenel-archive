@@ -9,6 +9,7 @@ const CardsExpandedDom = (function CardsExpandedDom() {
 
     const closeExpandedCard = () => {
         card.close();
+        document.body.classList.remove('dialog-open');
     };
 
     const addThumbnail = (cardParam) => {
@@ -67,6 +68,7 @@ const CardsExpandedDom = (function CardsExpandedDom() {
     const openExpandedCard = (cardParam) => {
         console.log("expanding card: ", cardParam);
         card.showModal();
+        document.body.classList.add('dialog-open');
         fillCardWithParams(cardParam);
     };
 

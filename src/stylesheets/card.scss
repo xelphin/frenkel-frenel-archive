@@ -11,19 +11,24 @@
     .card {
         height: 520px;
         width: 320px;
+        background-color: $color2-type2;
+        color: $color1-type3;
+        border-radius: 2%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        border: 0.8px solid $color1-type2;
         transition:
             0.05s linear transform,
             0.05s linear color;
 
         .card-image-container {
+            padding: 10px;
             width: 280px;
             height: 380px;
+            border-radius: 2%;
             margin-bottom: 10px;
+            background-color: $color2-type1;
 
             .card-image {
                 width: 100%;
@@ -53,7 +58,12 @@
     .card:hover {
         transform: scale(1.02);
         box-shadow: 8px 8px 8px $color2-type2;
-        border: 1.5px solid $color3-type1;
+        border: 1.5px solid $color3-type3;
         transition: 0.05s linear transform;
+        color: $color1-type2;
+    }
+    .card:active{
+        transform: scale(0.99);
+        background-color: $color2-type3;
     }
 }
