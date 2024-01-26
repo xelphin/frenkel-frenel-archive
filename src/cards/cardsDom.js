@@ -68,7 +68,11 @@ const CardsDom = (function CardsDom() {
                     const contentFrom = cardsText[key]["database-link-name"];
                     elem = createDriveLink(textValue, contentFrom);
                 } else {
-                    elem.textContent = `${showLabelName}: ${textValue}`;
+                    const textDivSpan = document.createElement("span");
+                    textDivSpan.textContent = `${textValue}`
+                    textDivSpan.classList.add("card-text-info-span")
+                    elem.textContent = `${showLabelName}: `;
+                    elem.appendChild(textDivSpan);
                 }
                 textDiv.appendChild(elem);
             }

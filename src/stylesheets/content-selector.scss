@@ -1,6 +1,7 @@
 @import "./general.scss";
 
 #menu-container {
+    padding: 0 20px;
     #content-selector-container {
         font-family: $main-font;
         font-weight: 500;
@@ -8,17 +9,22 @@
         flex-direction: row;
         justify-content: start;
         gap: 20px;
-        font-size: $med-size;
+        font-size: $large-size;
         padding: 0 $body-padding;
-        margin-bottom: 10px;
+        margin-bottom: 40px;
 
         .content-selector {
+            border-bottom: 2px $color3-type2 solid;
+            transition: all 0.2s ease 0s;
+            padding: 0 5px;
             height: 35px;
         }
 
         .content-selector:hover {
-            border-bottom: 2px $color3-type1 solid;
-            color: $color3-type1;
+            border-bottom: 3px $color1-type1 solid;
+            font-weight: 600;
+            transform: scale(1.03);
+            padding: 0 30px;
         }
     }
 }
