@@ -1,9 +1,9 @@
 @import "./general.scss";
 
 #filter-container {
+    padding: 10px 20px;
     font-family: $main-font;
-    border-bottom: 1px $color1-type2 solid;
-    padding: 0 $body-padding;
+    padding: 0 $body-padding 20px $body-padding;
 
     .specific-filter-container {
         display: grid;
@@ -18,21 +18,32 @@
             width: 18vw;
 
             input {
+                background-color: $color2-type2;
                 margin-top: 12px;
-                border: none;
-                border-bottom: 1px solid $color1-type2;
+                width: 100%;
+                color: $color3-type1;
+                font-size: 16px;
+                line-height: 20px;
+                min-height: 28px;
+                border-radius: 4px;
+                padding: 8px 16px;
+                border: 2px solid transparent;
+                box-shadow: rgb(0 0 0 / 12%) 0px 1px 3px, rgb(0 0 0 / 24%) 0px 1px 2px;
+                transition: all 0.1s ease 0s;
+            
             }
             input:active {
                 border: none;
                 border-bottom: 1px solid $color1-type2;
-                transform: scale(1.04);
+                background-color: $color3-type3;
             }
-            input:focus,
             input:focus {
                 outline: none;
                 border-bottom: 2px solid $color3-type1;
-                transform: scale(1.04);
                 color: $color3-type1;
+            }
+            input:hover {
+                border-bottom: 1px solid $color1-type2;
             }
         }
     }
@@ -42,22 +53,34 @@
 
         button {
             font-family: $main-font;
-            background-color: $color2-type1;
-            border: 1px solid $color3-type1;
-            padding: 5px 15px;
-            border-radius: 10%;
-            transition: 0.1s linear transform;
             margin-right: 20px;
+
+            display: inline-block;
+            outline: none;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1;
+            border-radius: 500px;
+            transition-property: background-color,border-color,color,box-shadow,filter;
+            transition-duration: .3s;
+            border: 0.5px solid transparent;
+            letter-spacing: 2px;
+            min-width: 160px;
+            white-space: normal;
+            font-weight: 500;
+            text-align: center;
+            padding: 16px 14px 18px;
+            color: $color1-type3;
+            box-shadow: inset 0 0 0 2px $color1-type3;
+            background-color: transparent;
+            height: 48px;
         }
         button:hover {
-            background-color: $color3-type1;
             color: $color2-type1;
-            transform: scale(1.02);
-            box-shadow: 5px 5px 3px $color2-type2;
-            border-radius: 10%;
+            background-color: $color1-type3;
         }
         button:active {
-            transform: scale(0.98);
+            transform: scale(0.95);
         }
     }
 }
