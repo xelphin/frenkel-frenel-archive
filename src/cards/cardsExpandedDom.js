@@ -15,6 +15,7 @@ const CardsExpandedDom = (function CardsExpandedDom() {
     const addThumbnail = (cardParam) => {
         const paramThumbnail = cardParam.imageLink;
         const paramExtension = cardParam.extension;
+
         if (
             paramThumbnail !== "" &&
             (paramExtension === "jpg" ||
@@ -22,13 +23,15 @@ const CardsExpandedDom = (function CardsExpandedDom() {
                 paramExtension === "png" ||
                 paramExtension === "pdf")
         ) {
+            
             thumbnail.src = dataFunctionsMod.getThumbnailImg(paramThumbnail);
         } else {
-            thumbnail.src = dataFunctionsMod.getErrorImg();
+            thumbnail.src = "./assets/thumbnail_inaccessible.png";
         }
     };
 
     const addDriveLink = (cardParam, parentDiv) => {
+        // Hyper link to external website/google drive document
         let link;
         if (
             !("websiteLink" in cardParam.cardData) ||
@@ -39,6 +42,15 @@ const CardsExpandedDom = (function CardsExpandedDom() {
                 cardParam.cardData.id,
                 cardParam.contentType,
             );
+            if (link === "") { 
+                // No link to the document in the drive.
+                console.log(cardParam.cardData.id, ": No link to the document in the drive.")
+                // Claim as inacessible
+                const inacessibleText = document.createElement("h3");
+                inacessibleText.textContent = "[Contact museum in order to access document]";
+                parentDiv.appendChild(inacessibleText);
+                return;
+            }
             console.log("Appending drive link");
         } else {
             console.log("No drive link and no website link.");

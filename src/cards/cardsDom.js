@@ -13,7 +13,7 @@ const CardsDom = (function CardsDom() {
         ) {
             img.src = dataFunctionsMod.getThumbnailImg(imageId);
         } else {
-            img.src = dataFunctionsMod.getErrorImg();
+            img.src = "./assets/thumbnail_inaccessible.png";
         }
         imgContainer.appendChild(img);
         return imgContainer;

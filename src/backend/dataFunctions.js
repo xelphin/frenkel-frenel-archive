@@ -53,7 +53,7 @@ const DataFunctions = (function DataFunctions() {
 
     const getMatchingDriveLink = (id, contentType) => {
         const idToLinkObjAtId = getIdToLinkObjForId(id, contentType);
-        if (idToLinkObjAtId === "") return "";
+        if (idToLinkObjAtId === "" || idToLinkObjAtId === undefined) return "";
         // Found link
         const prefix = "https://drive.google.com/file/d/";
         const postfix = "/view?usp=drive_link";
@@ -107,7 +107,7 @@ const DataFunctions = (function DataFunctions() {
 
     const prefixThumbnail = "https://drive.google.com/thumbnail?id=";
     const errorImg =
-        "https://drive.google.com/uc?export=view&id=1CRo72lZ3iGl28hoDaUmSkv7ojBTxUipa";
+        "./assets/not_found.png";
 
     const getThumbnailImg = (imageLink) => prefixThumbnail + imageLink;
     const getErrorImg = () => errorImg;

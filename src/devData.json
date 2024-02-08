@@ -2,8 +2,8 @@
     "articles": {
         "name": "Articles",
         "sourceLinks": {
-            "jsonUrl": "https://script.google.com/macros/s/AKfycbwNbzT-gLNUYhqBLqQZZFBTPyXe-dUgDT5uZuO89i6QwkVXCYDKTmZfkUhFSJYFurXUaQ/exec",
-            "idToLinkUrl": "https://script.google.com/macros/s/AKfycbz7nsnK3-T-ztazlsjcqKRLCyUTvJ5uLz07nS3nFHbsPTeSXXtaIiZVH8p8cRlEBq4b/exec"
+            "jsonUrl": "https://script.google.com/macros/s/AKfycbzIaMExSovSD6t1v-ZvJm3FeqGvNF7VH67XiXdv6YUaAuLoRQF9SD_93dr8eQfvyxCgrw/exec",
+            "idToLinkUrl": "https://script.google.com/macros/s/AKfycbze5cMjYdlVC2DkKKkmAg6Xgk3wTwGV5WHIINluxGEPlPWdgbRsFIIgmkX6914qbm1E/exec"
         },
         "dom": {
             "filterContainerId": "articles-filter-container",
@@ -87,7 +87,7 @@
                 "data-language": ""
             },
             "from-website": {
-                "label-text": "From Website",
+                "label-text": "From Website/ FREE ",
                 "database-name": "websiteLink",
                 "type": "checkbox",
                 "application": "has",
