@@ -3,7 +3,7 @@
         "name": "Articles",
         "sourceLinks": {
             "jsonUrl": "https://script.google.com/macros/s/AKfycbzIaMExSovSD6t1v-ZvJm3FeqGvNF7VH67XiXdv6YUaAuLoRQF9SD_93dr8eQfvyxCgrw/exec",
-            "idToLinkUrl": "https://script.google.com/macros/s/AKfycbze5cMjYdlVC2DkKKkmAg6Xgk3wTwGV5WHIINluxGEPlPWdgbRsFIIgmkX6914qbm1E/exec"
+            "idToLinkUrl": "https://script.google.com/macros/s/AKfycbxCo1D-dIbZIcfzRoaZ-Zs_eW-Osj1LGb44YqSdkphcqhmTvRdMdp_zDAQ6-j-n-ftU/exec"
         },
         "dom": {
             "filterContainerId": "articles-filter-container",
